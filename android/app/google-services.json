@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1032882392426",
+    "project_id": "sheegr-a06b6",
+    "storage_bucket": "sheegr-a06b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032882392426:android:600648d4815228635c6913",
+        "android_client_info": {
+          "package_name": "com.example.sheegr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032882392426-2m5vqfl7rd55t92a825cokktmc064hs7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5O9--meMc7cceDgKoQLM8jWMhlsa2OWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032882392426-2m5vqfl7rd55t92a825cokktmc064hs7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
