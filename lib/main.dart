@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'src/screens/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,31 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Sheegr',
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sheegr'),
-        backgroundColor: Colors.amber,
-        elevation: 4,
-      ),
-      body: const Center(
-        child: Text(
-          'HomePage',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        ),
-      ),
+      home: MainScreen(),
     );
   }
 }
