@@ -44,40 +44,42 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB4o2Hv00_HmA1PWM-zhB2qI9DHMp1IU5Y',
-    appId: '1:1032882392426:web:8dbf26907cb0b0fc5c6913',
-    messagingSenderId: '1032882392426',
-    projectId: 'sheegr-a06b6',
-    authDomain: 'sheegr-a06b6.firebaseapp.com',
-    storageBucket: 'sheegr-a06b6.appspot.com',
-    measurementId: 'G-CSHF23Q6LN',
+    apiKey: 'AIzaSyAOLnqGc0s_nq_oGTIL3h2SDwIH9DlF1J8',
+    appId: '1:140075343149:web:561a48ebbdba348da6c7a4',
+    messagingSenderId: '140075343149',
+    projectId: 'sheegr-1837d',
+    authDomain: 'sheegr-1837d.firebaseapp.com',
+    storageBucket: 'sheegr-1837d.appspot.com',
+    measurementId: 'G-BFJBYM8JMC',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD5O9--meMc7cceDgKoQLM8jWMhlsa2OWw',
-    appId: '1:1032882392426:android:600648d4815228635c6913',
-    messagingSenderId: '1032882392426',
-    projectId: 'sheegr-a06b6',
-    storageBucket: 'sheegr-a06b6.appspot.com',
+    apiKey: 'AIzaSyBC4f2kRv40TeBRKZyrCRredUvYAjsh6q0',
+    appId: '1:140075343149:android:a0f117bb61450b7aa6c7a4',
+    messagingSenderId: '140075343149',
+    projectId: 'sheegr-1837d',
+    storageBucket: 'sheegr-1837d.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAM3xFt66q5yIkY3mPdkthxOHNmaGEUWy0',
-    appId: '1:1032882392426:ios:5943467f1e15c43c5c6913',
-    messagingSenderId: '1032882392426',
-    projectId: 'sheegr-a06b6',
-    storageBucket: 'sheegr-a06b6.appspot.com',
-    iosClientId: '1032882392426-dntnen41v5khdf396j159rqa5me6kiqk.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBFpMqkfQQJNvJsWBq44GBr3glQLOuyi64',
+    appId: '1:140075343149:ios:182fcf9b6d72cb46a6c7a4',
+    messagingSenderId: '140075343149',
+    projectId: 'sheegr-1837d',
+    storageBucket: 'sheegr-1837d.appspot.com',
+    androidClientId: '140075343149-ivhe0ueamqdc21gk5mjklobj34m34p1o.apps.googleusercontent.com',
+    iosClientId: '140075343149-109h0ud06tdp5167s21cm8m9mvt92k0f.apps.googleusercontent.com',
     iosBundleId: 'com.example.sheegr',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAM3xFt66q5yIkY3mPdkthxOHNmaGEUWy0',
-    appId: '1:1032882392426:ios:6a436d247e85b2895c6913',
-    messagingSenderId: '1032882392426',
-    projectId: 'sheegr-a06b6',
-    storageBucket: 'sheegr-a06b6.appspot.com',
-    iosClientId: '1032882392426-qhr827m3pf6s16lphftt91dte35e26v5.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBFpMqkfQQJNvJsWBq44GBr3glQLOuyi64',
+    appId: '1:140075343149:ios:9ccdb1366dbc99bea6c7a4',
+    messagingSenderId: '140075343149',
+    projectId: 'sheegr-1837d',
+    storageBucket: 'sheegr-1837d.appspot.com',
+    androidClientId: '140075343149-ivhe0ueamqdc21gk5mjklobj34m34p1o.apps.googleusercontent.com',
+    iosClientId: '140075343149-nl2cp0nu6u3fn185hfaq5sspt7mvk42k.apps.googleusercontent.com',
     iosBundleId: 'com.example.sheegr.RunnerTests',
   );
 }
