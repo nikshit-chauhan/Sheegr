@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
+  static String route = "/main";
   const MainScreen({super.key});
 
   @override

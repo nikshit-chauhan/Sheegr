@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
+  static String route = "/login";
   const LoginScreen({super.key});
 
   @override
@@ -22,7 +23,12 @@ class _LoginScreenState extends State<LoginScreen> {
         title: const Text('Login Page'),
         backgroundColor: Colors.transparent,
       ),
-      body: const Text('Login page'),
+      body: const Center(
+        child: Text(
+          'Login page',
+          style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+        ),
+      ),
     );
   }
 }

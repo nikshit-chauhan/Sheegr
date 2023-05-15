@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'src/screens/main_screen.dart';
+import 'package:sheegr/src/screens/login_screen.dart';
+import 'package:sheegr/src/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Sheegr',
-      home: MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/login': (context) => const LoginScreen(),
+      },
     );
   }
 }
