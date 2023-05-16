@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sheegr/src/screens/login_screen.dart';
+import 'package:sheegr/src/screens/main_screen.dart';
+import 'package:sheegr/src/screens/registration_screen.dart';
 import 'package:sheegr/src/screens/splash_screen.dart';
 
 void main() {
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
-        '/login': (context) => const LoginScreen(),
+        '/login': (context) => LoginScreen(),
+        '/main': (context) => const MainScreen(),
+        '/register': (context) => RegistrationScreen(),
       },
     );
   }

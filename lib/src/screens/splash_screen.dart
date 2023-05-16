@@ -11,7 +11,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<double> _animation;
+  // late Animation<double> _animation;
 
   @override
   void initState() {
@@ -22,13 +22,13 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 1000),
     );
 
-    _animation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeInBack),
-    );
+    // _animation = Tween<double>(begin: 0, end: 1).animate(
+    //   CurvedAnimation(parent: _animationController, curve: Curves.easeInBack),
+    // );
 
     _animationController.forward();
 
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, '/login');
     });
   }
@@ -42,33 +42,17 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
-        child: FadeTransition(
-          opacity: _animation,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 250,
-              ),
-              Image.asset(
-                "lib/Assets/Images/logoone.png",
-                width: 250,
-                height: 250,
-              ),
-              SizedBox(
-                height: 150,
-              ),
-              Image.asset(
-                "lib/Assets/Images/kfdcIcon.png",
-                width: MediaQuery.of(context).size.width * .44,
-                height: MediaQuery.of(context).size.height * .15,
-              ),
-            ],
-          ),
-        ),
+          child: Image.asset(
+        "lib/Assets/Images/logoone.png",
+        width: 250,
+        height: 250,
+      )),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Image.asset(
+        "lib/Assets/Images/kfdcIcon.png",
+        width: MediaQuery.of(context).size.width * .44,
+        height: MediaQuery.of(context).size.height * .15,
       ),
     );
   }
