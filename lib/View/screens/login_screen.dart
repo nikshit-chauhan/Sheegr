@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sheegr/Resources/Colors.dart';
 import 'package:sheegr/View/screens/main_screen.dart';
 import 'package:sheegr/View/screens/registration_screen.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../Resources/Strings.dart';
+
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-
   String phoneNumber = '';
 
   String otp = '';
@@ -18,22 +20,124 @@ class LoginScreen extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) => Scaffold(
         appBar: AppBar(
+          elevation: 0,
           leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios_new,
-                color: Colors.black,
-              ),
-              onPressed: () => Get.off(const MainScreen())),
-          title: const Text('Login'),
-          backgroundColor: Colors.transparent,
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.black,
+            ),
+            onPressed: () => Get.off(
+              const MainScreen(),
+            ),
+          ),
+          backgroundColor: Colors.white,
+          leadingWidth: 40,
         ),
-        body: Column(
-          children: [
-            ElevatedButton(
-                onPressed: () => Get.off(
-                    const RegistrationScreen()), //TODO: correct the route here to login Auth page
-                child: const Text('Login'))
-          ],
+        body: Form(
+          child: SingleChildScrollView(
+            child: SafeArea(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Text(
+                          Strings.login,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "Quicksand-Bold",
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Text(
+                          Strings.enterurnumber,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: "Quicksand-Regular",
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Column(
+                          children: [
+                            TextFormField(
+                              keyboardType: TextInputType.number,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 50.0,
+                          child: ElevatedButton(
+                            onPressed: () =>
+                                Get.off(const RegistrationScreen()),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: colorPrimary),
+                            child: const Text(
+                              Strings.CONTINUE,
+                              style: TextStyle(
+                                fontFamily: "Quicksand-Bold",
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    thickness: 1,
+                    color: Colors.grey.shade300,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Row(
+                      children: [
+                        const Text(
+                          Strings.donthaveaccount,
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 121, 118, 118),
+                              fontSize: 17),
+                        ),
+                        TextButton(
+                          onPressed: (() {
+                            Get.to(const RegistrationScreen());
+                            // registerController.resetControllers();
+                          }),
+                          child: const Row(
+                            children: [
+                              Text(
+                                Strings.register,
+                                style: TextStyle(
+                                  color: colorPrimary,
+                                  fontSize: 17,
+                                  fontFamily: "Quicksand-Bold",
+                                ),
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                color: colorPrimary,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
