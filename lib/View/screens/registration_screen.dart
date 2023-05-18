@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:sheegr/View/screens/login_screen.dart';
 import 'package:sizer/sizer.dart';
+import 'package:flutter/services.dart';
 
 class RegistrationScreen extends StatelessWidget {
-  static String route = "/register";
-
   const RegistrationScreen({super.key});
 
   @override
@@ -15,7 +15,7 @@ class RegistrationScreen extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.white,
           leading: IconButton(
-            onPressed: () => Navigator.popAndPushNamed(context, '/main'),
+            onPressed: () => Get.off(LoginScreen()),
             icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
@@ -168,6 +168,7 @@ class RegistrationScreen extends StatelessWidget {
                           width: double.infinity,
                           height: 50,
                           child: ElevatedButton(
+                            //TODO: implement onPressed functionality
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
                                 primary: Colors.redAccent),
@@ -195,8 +196,7 @@ class RegistrationScreen extends StatelessWidget {
                                 style: TextStyle(fontSize: 17),
                               ),
                               TextButton(
-                                onPressed: () => Navigator.popAndPushNamed(
-                                    context, '/login'),
+                                onPressed: () => Get.offAll(LoginScreen()),
                                 child: const Row(
                                   children: [
                                     Text('Login',

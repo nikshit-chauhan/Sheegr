@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:get/get.dart';
-import 'package:sheegr/src/screens/registration_screen.dart';
+import 'package:sheegr/View/screens/main_screen.dart';
+import 'package:sheegr/View/screens/registration_screen.dart';
 import 'package:sizer/sizer.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  static String route = "/login";
   LoginScreen({super.key});
 
   String phoneNumber = '';
@@ -23,15 +23,15 @@ class LoginScreen extends StatelessWidget {
                 Icons.arrow_back_ios_new,
                 color: Colors.black,
               ),
-              onPressed: () => Navigator.popAndPushNamed(context, '/main')),
+              onPressed: () => Get.off(const MainScreen())),
           title: const Text('Login'),
           backgroundColor: Colors.transparent,
         ),
         body: Column(
           children: [
             ElevatedButton(
-                onPressed: () =>
-                    Navigator.popAndPushNamed(context, '/register'),
+                onPressed: () => Get.off(
+                    const RegistrationScreen()), //TODO: correct the route here to login Auth page
                 child: const Text('Login'))
           ],
         ),

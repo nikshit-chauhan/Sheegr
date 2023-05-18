@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sheegr/View/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  static String route = "/splash";
   const SplashScreen({super.key});
 
   @override
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
     _animationController.forward();
 
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/login');
+      Get.offAll(LoginScreen());
     });
   }
 

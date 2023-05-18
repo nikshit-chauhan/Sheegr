@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sheegr/src/screens/login_screen.dart';
-import 'package:sheegr/src/screens/main_screen.dart';
-import 'package:sheegr/src/screens/registration_screen.dart';
-import 'package:sheegr/src/screens/splash_screen.dart';
+import 'package:get/get.dart';
+import 'package:sheegr/View/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,15 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-    return MaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashScreen(),
-        '/login': (context) => LoginScreen(),
-        '/main': (context) => const MainScreen(),
-        '/register': (context) => RegistrationScreen(),
-      },
+      home: SplashScreen(),
     );
   }
 }
