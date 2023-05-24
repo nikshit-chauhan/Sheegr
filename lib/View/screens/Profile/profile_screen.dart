@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sheegr/Controller/email_controller.dart';
 import 'package:sheegr/Resources/Colors.dart';
 import 'package:sheegr/Utils/Widgets/custom_text_filed.dart';
 import 'package:sizer/sizer.dart';
@@ -9,6 +10,8 @@ import '../../../Resources/Strings.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {
+  final EmailController controller = Get.put(EmailController());
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   List<String> categories = [
@@ -20,6 +23,7 @@ class ProfileScreen extends StatelessWidget {
     'Others',
   ];
   RxString selectedCategory = '---Select Category---'.obs;
+  RxBool showError = false.obs;
 
   ProfileScreen({super.key});
 
@@ -79,7 +83,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       Container(
                         width: double.infinity,
-                        height: 50,
+                        height: 59,
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey.shade300),
                           borderRadius: BorderRadius.circular(4),
@@ -124,31 +128,42 @@ class ProfileScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
-                        //TODO: add validator and onChanged
-                        textCapitalization: TextCapitalization.none,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.grey.shade300,
+                      Obx(() {
+                        return TextFormField(
+                          controller: emailController,
+                          //TODO: add validator and onChanged
+                          textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            errorText: controller.showError.value
+                                ? 'Invalid Email'
+                                : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
+                              ),
                             ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            hintText: 'Email(Optional)',
                           ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                            color: Colors.grey.shade300,
-                          )),
-                          focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                            color: Colors.grey.shade300,
-                          )),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                            color: Colors.grey.shade300,
-                          )),
-                          hintText: 'Email(Optional)',
-                        ),
-                      ),
+                          onChanged: (value) {
+                            controller.email.value = value;
+                            controller.validateEmail(value);
+                          },
+                        );
+                      }),
                       const SizedBox(
                         height: 20,
                       ),
@@ -187,15 +202,66 @@ class ProfileScreen extends StatelessWidget {
                               return Align(
                                 alignment: Alignment.centerLeft,
                                 child: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 16),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16),
                                   child: Text(
                                     item,
-                                    style: TextStyle(fontSize: 18),
+                                    style: const TextStyle(fontSize: 18),
                                   ),
                                 ),
                               );
                             }).toList();
                           }),
+                        );
+                      }),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Obx(() {
+                        return TextFormField(
+                          textCapitalization: TextCapitalization.characters,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                          maxLength: 15,
+                          onChanged: (value) {
+                            if (value.length < 15) {
+                              showError.value = true;
+                            } else {
+                              showError.value = false;
+                            }
+                          },
+                          decoration: InputDecoration(
+                            suffixIcon: TextButton(
+                              //TODO: validate the GSTIN with GST Api
+                              onPressed: () {},
+                              child: const Text(
+                                'VERIFY',
+                                style: TextStyle(
+                                    fontSize: 15, color: colorPrimary),
+                              ),
+                            ),
+                            errorText: showError.value
+                                ? 'Enter a valid 15 character GST Number!'
+                                : null,
+                            labelText: 'GSTIN',
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            hintText: 'GST Number',
+                          ),
                         );
                       }),
                       const SizedBox(
