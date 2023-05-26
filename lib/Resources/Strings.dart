@@ -18,7 +18,7 @@ class Strings {
   static const String yellowfintuna = "Yellow Fin Tuna";
   static const String offertxt = "25% OFF";
   static const String customize = "Customize";
-  static const String About = "About";
+  static const String about = "About";
   static const String error = "404 Error";
   static const String aboutus = "About Sheegr";
   static const String proceed = "PROCEED";
@@ -118,7 +118,7 @@ class Strings {
   static const String email = "Email";
   static const String accountDelete = "Account Deleted";
   static const String enter = "Account Deleted";
-  static const String CONTINUE = "CONTINUE";
+  static const String continuE = "CONTINUE";
   static const String donthaveaccount = "Don't have an account?   ";
   static const String enterurnumber = "Enter your mobile number";
   static const String cart = "Cart";
@@ -160,7 +160,8 @@ class Strings {
       'Are you sure do you want to delete this address?';
   static const String payment = 'Payment';
   static const String productDescription = "Product Description :";
-  static const String deleteMsg = "Are you sure you want to delete this item ? ";
+  static const String deleteMsg =
+      "Are you sure you want to delete this item ? ";
   static const String paymentFailed =
       'Your payment for the order has been cancelled. If money was debited from your account, it will be refunded to your account within 4 working days.';
 }

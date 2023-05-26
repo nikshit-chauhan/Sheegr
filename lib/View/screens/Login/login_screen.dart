@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:sheegr/Resources/Colors.dart';
+import 'package:sheegr/Controller/mobile_controller.dart';
+import 'package:sheegr/Resources/colors.dart';
 import 'package:sheegr/View/screens/OTP/otp_verification_screen.dart';
 import 'package:sheegr/View/screens/main_screen.dart';
 import 'package:sizer/sizer.dart';
-import '../../../Resources/Strings.dart';
+import '../../../Resources/strings.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  TextEditingController phoneNumberController = TextEditingController();
+  MobileController phoneNumberController = Get.put(MobileController());
 
   LoginScreen({super.key});
 
@@ -78,7 +79,9 @@ class LoginScreen extends StatelessWidget {
                       Column(
                         children: [
                           TextFormField(
-                            controller: phoneNumberController,
+                            onChanged: (value) {
+                              phoneNumberController.setMobileNumber(value);
+                            },
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[
                               LengthLimitingTextInputFormatter(10),
@@ -138,23 +141,37 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 45,
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 50.0,
-                        child: ElevatedButton(
-                          onPressed: () =>
-                              Get.to(const OtpVerificationScreen()),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: colorPrimary),
-                          child: const Text(
-                            Strings.CONTINUE,
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontFamily: "Quicksand-Bold",
+                      Obx(() {
+                        final isValidNumber =
+                            phoneNumberController.mobileNumber.value.length ==
+                                10;
+                        return SizedBox(
+                          width: double.infinity,
+                          height: 50.0,
+                          child: ElevatedButton(
+                            onPressed: isValidNumber
+                                ? () {
+                                    String mobileNum = phoneNumberController
+                                        .mobileNumber.value;
+                                    Get.to(OtpVerificationScreen(
+                                      mobileNumber: mobileNum,
+                                    ));
+                                  }
+                                : null,
+                            style: ElevatedButton.styleFrom(
+                                disabledBackgroundColor: Colors.grey.shade300,
+                                disabledForegroundColor: Colors.white,
+                                backgroundColor: colorPrimary),
+                            child: const Text(
+                              Strings.continuE,
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontFamily: "Quicksand-Bold",
+                              ),
                             ),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                       const SizedBox(
                         height: 40,
                       ),

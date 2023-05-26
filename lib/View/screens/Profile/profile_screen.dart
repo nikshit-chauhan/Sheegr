@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sheegr/Controller/email_controller.dart';
-import 'package:sheegr/Resources/Colors.dart';
+import 'package:sheegr/Resources/colors.dart';
 import 'package:sheegr/Utils/Widgets/custom_text_filed.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/services.dart';
 
-import '../../../Resources/Strings.dart';
+import '../../../Resources/strings.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {
@@ -276,7 +276,7 @@ class ProfileScreen extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                               backgroundColor: colorPrimary),
                           child: const Text(
-                            Strings.CONTINUE,
+                            Strings.continuE,
                             style: TextStyle(
                               fontFamily: "Quicksand-Bold",
                               fontSize: 20,
