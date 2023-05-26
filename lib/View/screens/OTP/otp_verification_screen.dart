@@ -116,7 +116,7 @@ class OtpVerificationScreen extends StatelessWidget {
                           ],
                           enableActiveFill: false,
                           onChanged: (value) {
-                            print(value);
+                            // print(value);
                           }),
                     ),
                     const SizedBox(
