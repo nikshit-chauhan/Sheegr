@@ -32,153 +32,155 @@ class LoginScreen extends StatelessWidget {
           backgroundColor: Colors.transparent,
           leadingWidth: 40,
         ),
-        body: Form(
-          child: SafeArea(
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 45,
-                ),
-                Container(
-                  height: 150,
-                  width: 150,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
+        body: SingleChildScrollView(
+          child: Form(
+            child: SafeArea(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 45,
                   ),
-                  child: const Image(
-                      image: AssetImage("lib/Assets/Images/logotwo.png")),
-                ),
-                const SizedBox(
-                  height: 45,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        Strings.login,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontFamily: "Quicksand-Bold",
+                  Container(
+                    height: 150,
+                    width: 150,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Image(
+                        image: AssetImage("lib/Assets/Images/logotwo.png")),
+                  ),
+                  const SizedBox(
+                    height: 45,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          Strings.login,
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: "Quicksand-Bold",
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      const Text(
-                        Strings.enterurnumber,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: "Quicksand-Regular",
+                        const SizedBox(
+                          height: 25,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 45,
-                      ),
-                      Column(
-                        children: [
-                          TextFormField(
-                            onChanged: (value) {
-                              phoneNumberController.setMobileNumber(value);
-                            },
-                            keyboardType: TextInputType.number,
-                            inputFormatters: <TextInputFormatter>[
-                              LengthLimitingTextInputFormatter(10),
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            cursorColor: Colors.black,
-                            decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.grey.shade300,
+                        const Text(
+                          Strings.enterurnumber,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "Quicksand-Regular",
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 45,
+                        ),
+                        Column(
+                          children: [
+                            TextFormField(
+                              onChanged: (value) {
+                                phoneNumberController.setMobileNumber(value);
+                              },
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                LengthLimitingTextInputFormatter(10),
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              cursorColor: Colors.black,
+                              decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.grey.shade300,
+                                  ),
                                 ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.grey.shade300,
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.grey.shade300,
+                                  ),
                                 ),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.grey.shade300,
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.grey.shade300,
+                                  ),
                                 ),
-                              ),
-                              errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.grey.shade300,
+                                errorBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Colors.grey.shade300,
+                                  ),
                                 ),
-                              ),
-                              hintText: Strings.mobilenumber,
-                              contentPadding: const EdgeInsets.all(10.0),
-                              prefixIcon: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: SizedBox(
-                                  height: 20,
-                                  width: 40,
-                                  child: Row(
-                                    children: [
-                                      const Text(
-                                        '+91',
-                                        style: TextStyle(fontSize: 15),
-                                      ),
-                                      Container(
-                                        height: 33,
-                                        width: 1,
-                                        color: const Color.fromARGB(
-                                            255, 161, 160, 160),
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 5),
-                                      ),
-                                    ],
+                                hintText: Strings.mobilenumber,
+                                contentPadding: const EdgeInsets.all(10.0),
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SizedBox(
+                                    height: 20,
+                                    width: 40,
+                                    child: Row(
+                                      children: [
+                                        const Text(
+                                          '+91',
+                                          style: TextStyle(fontSize: 15),
+                                        ),
+                                        Container(
+                                          height: 33,
+                                          width: 1,
+                                          color: const Color.fromARGB(
+                                              255, 161, 160, 160),
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 5),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 45,
-                      ),
-                      Obx(() {
-                        final isValidNumber =
-                            phoneNumberController.mobileNumber.value.length ==
-                                10;
-                        return SizedBox(
-                          width: double.infinity,
-                          height: 50.0,
-                          child: ElevatedButton(
-                            onPressed: isValidNumber
-                                ? () {
-                                    String mobileNum = phoneNumberController
-                                        .mobileNumber.value;
-                                    Get.to(OtpVerificationScreen(
-                                      mobileNumber: mobileNum,
-                                    ));
-                                  }
-                                : null,
-                            style: ElevatedButton.styleFrom(
-                                disabledBackgroundColor: Colors.grey.shade300,
-                                disabledForegroundColor: Colors.white,
-                                backgroundColor: colorPrimary),
-                            child: const Text(
-                              Strings.continuE,
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontFamily: "Quicksand-Bold",
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 45,
+                        ),
+                        Obx(() {
+                          final isValidNumber =
+                              phoneNumberController.mobileNumber.value.length ==
+                                  10;
+                          return SizedBox(
+                            width: double.infinity,
+                            height: 50.0,
+                            child: ElevatedButton(
+                              onPressed: isValidNumber
+                                  ? () {
+                                      String mobileNum = phoneNumberController
+                                          .mobileNumber.value;
+                                      Get.to(OtpVerificationScreen(
+                                        mobileNumber: mobileNum,
+                                      ));
+                                    }
+                                  : null,
+                              style: ElevatedButton.styleFrom(
+                                  disabledBackgroundColor: Colors.grey.shade300,
+                                  disabledForegroundColor: Colors.white,
+                                  backgroundColor: colorPrimary),
+                              child: const Text(
+                                Strings.continuE,
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontFamily: "Quicksand-Bold",
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                    ],
+                          );
+                        }),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

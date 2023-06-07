@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,7 +28,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -42,16 +48,6 @@ class DefaultFirebaseOptions {
         );
     }
   }
-
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAOLnqGc0s_nq_oGTIL3h2SDwIH9DlF1J8',
-    appId: '1:140075343149:web:561a48ebbdba348da6c7a4',
-    messagingSenderId: '140075343149',
-    projectId: 'sheegr-1837d',
-    authDomain: 'sheegr-1837d.firebaseapp.com',
-    storageBucket: 'sheegr-1837d.appspot.com',
-    measurementId: 'G-BFJBYM8JMC',
-  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBC4f2kRv40TeBRKZyrCRredUvYAjsh6q0',
@@ -70,16 +66,5 @@ class DefaultFirebaseOptions {
     androidClientId: '140075343149-ivhe0ueamqdc21gk5mjklobj34m34p1o.apps.googleusercontent.com',
     iosClientId: '140075343149-109h0ud06tdp5167s21cm8m9mvt92k0f.apps.googleusercontent.com',
     iosBundleId: 'com.example.sheegr',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBFpMqkfQQJNvJsWBq44GBr3glQLOuyi64',
-    appId: '1:140075343149:ios:9ccdb1366dbc99bea6c7a4',
-    messagingSenderId: '140075343149',
-    projectId: 'sheegr-1837d',
-    storageBucket: 'sheegr-1837d.appspot.com',
-    androidClientId: '140075343149-ivhe0ueamqdc21gk5mjklobj34m34p1o.apps.googleusercontent.com',
-    iosClientId: '140075343149-nl2cp0nu6u3fn185hfaq5sspt7mvk42k.apps.googleusercontent.com',
-    iosBundleId: 'com.example.sheegr.RunnerTests',
   );
 }
