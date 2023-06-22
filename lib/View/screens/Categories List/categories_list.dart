@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:get/get.dart';
+import 'package:sheegr/View/screens/Home/home.dart';
 
+import '../../../Resources/Colors.dart';
 import '../ParticularCategoryList/particular_category_list.dart';
-
 
 class CategoriesList extends StatelessWidget {
   const CategoriesList({super.key});
@@ -12,16 +13,22 @@ class CategoriesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          elevation: 3,
-          centerTitle: true,
-          backgroundColor: Color(0xffE40045),
-          leading: BackButton(
-            color: Colors.black,
-          ),
-          title: Text(
+          elevation: 0,
+          title: const Text(
             "Categories",
             style: TextStyle(color: Colors.black),
           ),
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.black,
+            ),
+            onPressed: () => Get.offAll(Home(),
+                transition: Transition.cupertino,
+                duration: const Duration(milliseconds: 600)),
+          ),
+          backgroundColor: colorPrimary,
+          leadingWidth: 40,
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -31,7 +38,7 @@ class CategoriesList extends StatelessWidget {
               return GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: List.generate(2, (subIndex) {
                   int itemIndex = index * 2 + subIndex;
                   if (itemIndex < 1) {
@@ -64,13 +71,13 @@ class CategoriesList extends StatelessWidget {
                                         "assets/icons/friedfish.PNG")),
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Color(0xffE40045).withOpacity(0.8),
+                                    color: const Color(0xffE40045).withOpacity(0.8),
                                     borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(15),
                                       bottomRight: Radius.circular(15),
                                     ),
                                   ),
-                                  child: ListTile(
+                                  child: const ListTile(
                                     titleAlignment:
                                         ListTileTitleAlignment.center,
                                     title: AutoSizeText("Fried Fish",
@@ -82,13 +89,12 @@ class CategoriesList extends StatelessWidget {
                           ),
                         ));
                   } else {
-                    return Text("");
+                    return const Text("");
                   }
                 }),
               );
             },
           ),
         ));
-
   }
 }

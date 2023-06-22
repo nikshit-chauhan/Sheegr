@@ -1,13 +1,13 @@
 // import 'dart:io';
 // import 'dart:js';
 
+// ignore_for_file: must_be_immutable
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:dots_indicator/dots_indicator.dart';
 // import 'package:getwidget/getwidget.dart';
-
-
 
 import '../../../Resources/New_textfield.dart';
 import '../../../Resources/fontstyle.dart';
@@ -17,7 +17,7 @@ import '../ItemInfo/iteminfo.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-   Home({super.key});
+  Home({super.key});
 
   // Future<bool> onWillPop() async {
   //   return (await showDialog(
@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
   //               child: Text('Yes', style: AppFontStyle.cotentTextStyle()),
   //             ),
   //           ],
-  //         ), 
+  //         ),
   //       )) ??
   //       false;
   // }
@@ -82,7 +82,7 @@ class Home extends StatelessWidget {
             ),
             // SizedBox(width: 5),
             // Text("Location rjkerk;ger"),
-            Icon(
+            const Icon(
               Icons.location_on,
               color: Color(0xffE40045),
               size: 35,
@@ -105,7 +105,7 @@ class Home extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.2,
           child: Container(
-            color: Color(0xffE40045),
+            color: const Color(0xffE40045),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -211,7 +211,7 @@ class Home extends StatelessWidget {
 
   Widget cardWidget2() {
     return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       // scrollDirection: Axis.horizontal,
       itemCount: 1,
@@ -220,7 +220,8 @@ class Home extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              Get.to(CategoriesList(),
+              Get.to(
+                const CategoriesList(),
                 transition: Transition.cupertino,
                 duration: const Duration(milliseconds: 600),
               );
@@ -230,9 +231,9 @@ class Home extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: Hero(
-                    tag:'new1',
+                    tag: 'new1',
                     child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10)
+                      borderRadius: const BorderRadius.all(Radius.circular(10)
                           // topLeft: Radius.circular(10.0),
                           // bottomLeft: Radius.circular(10.0),
                           ),
@@ -246,8 +247,8 @@ class Home extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    padding: EdgeInsets.all(16.0),
-                    child: Center(
+                    padding: const EdgeInsets.all(16.0),
+                    child: const Center(
                       child: Text(
                         'Category Name',
                         style: TextStyle(
@@ -265,8 +266,7 @@ class Home extends StatelessWidget {
       },
     );
   }
-    //! removed as of now (not required)
-
+  //! removed as of now (not required)
 
   // Widget carouselWidget(BuildContext context) {
   //   return Padding(
@@ -373,7 +373,7 @@ class Home extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10),
       child: ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: 1,
           scrollDirection: Axis.vertical,
@@ -381,8 +381,7 @@ class Home extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 Get.to(
-                  () => ItemInfo(
-                      imagePath: "lib/Assets/Images/friedfish.PNG"),
+                  () => ItemInfo(imagePath: "lib/Assets/Images/friedfish.PNG"),
                   transition: Transition.cupertino,
                   duration: const Duration(milliseconds: 600),
                 );
@@ -391,7 +390,7 @@ class Home extends StatelessWidget {
                 clipBehavior: Clip.antiAliasWithSaveLayer,
                 semanticContainer: true,
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(
+                  side: const BorderSide(
                     color: Colors.transparent,
                   ),
                   borderRadius: BorderRadius.circular(15.0),
@@ -422,14 +421,14 @@ class Home extends StatelessWidget {
                         ),
                       ),
                       child: ListTile(
-                          title: AutoSizeText("Fried Fish",
+                          title: const AutoSizeText("Fried Fish",
                               style: TextStyle(color: Colors.white)),
                           subtitle: AutoSizeText(
                             "cooking fish by fully immersing it in hot oil",
                             style:
                                 TextStyle(color: Colors.white.withOpacity(0.7)),
                           ),
-                          trailing: Icon(
+                          trailing: const Icon(
                             Icons.arrow_right_alt,
                             color: Colors.white,
                           )),
@@ -467,10 +466,8 @@ class Home extends StatelessWidget {
 
   int dotValue = 0;
 
-
-
   @override
-  Widget build(BuildContext context)  {
+  Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       drawer: Drawer(
@@ -491,10 +488,10 @@ class Home extends StatelessWidget {
             // Spacer(),
 
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Card(
                   elevation: 2,
-                  shadowColor: Color(0xffE40045).withRed(200),
+                  shadowColor: const Color(0xffE40045).withRed(200),
                   // surfaceTintColor: Colors.blueGrey,
                   color: Colors.white,
                   child: ListTile(
@@ -502,7 +499,7 @@ class Home extends StatelessWidget {
                       // autoFocus: false,
                       hintText: "Search for fishes",
                     ),
-                    trailing: Icon(
+                    trailing: const Icon(
                       Icons.search_sharp,
                       color: Color(0xffE40045),
                       size: 32,
@@ -532,7 +529,7 @@ class Home extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Get.to(
-                        () => CategoriesList(),
+                        () => const CategoriesList(),
                         transition: Transition.rightToLeft,
                         duration: const Duration(milliseconds: 600),
                       );
@@ -550,7 +547,7 @@ class Home extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
                         ),
-                        Icon(
+                        const Icon(
                           Icons.arrow_right_alt_outlined,
                           size: 25,
                           color: Colors.black26,
@@ -585,6 +582,5 @@ class Home extends StatelessWidget {
         ),
       ),
     );
- 
   }
 }

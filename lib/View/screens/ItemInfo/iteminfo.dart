@@ -1,29 +1,39 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sheegr/Controller/quantity_controller.dart';
 
+import '../../../Resources/Colors.dart';
 import '../../../Resources/fontstyle.dart';
+import '../Home/home.dart';
 
 class ItemInfo extends StatelessWidget {
   final String imagePath;
   QuantityController quantity = Get.put(QuantityController());
-     ItemInfo({required this.imagePath});
+  ItemInfo({required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 3,
-        centerTitle: true,
-        backgroundColor: Color(0xffE40045),
-        leading: BackButton(
-          color: Colors.black,
-        ),
-        title: AutoSizeText(
-          "Product Details",
+        elevation: 0,
+        title: const Text(
+          "Item Information",
           style: TextStyle(color: Colors.black),
         ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+          ),
+          onPressed: () => Get.offAll(Home(),
+              transition: Transition.cupertino,
+              duration: const Duration(milliseconds: 600)),
+        ),
+        backgroundColor: colorPrimary,
+        leadingWidth: 40,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -65,7 +75,7 @@ class ItemInfo extends StatelessWidget {
                 padding: const EdgeInsets.all(4),
                 child: ListView.builder(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: 2,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
@@ -74,7 +84,7 @@ class ItemInfo extends StatelessWidget {
                           elevation: 2,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            side: BorderSide(
+                            side: const BorderSide(
                               color: Colors.black12,
                             ),
                             borderRadius: BorderRadius.circular(15.0),
@@ -89,7 +99,7 @@ class ItemInfo extends StatelessWidget {
                                         "lib/Assets/images/friedfish.PNG",
                                         fit: BoxFit.cover,
                                       ))),
-                              Expanded(
+                              const Expanded(
                                 child: ListTile(
                                   title: Column(
                                     crossAxisAlignment:
@@ -122,21 +132,21 @@ class ItemInfo extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     IconButton(
-                                      icon: Icon(Icons.remove),
-                                      onPressed:quantity.incrementQuantity,
-                                      color: Color(0xffE40045),
+                                      icon: const Icon(Icons.remove),
+                                      onPressed: quantity.incrementQuantity,
+                                      color: const Color(0xffE40045),
                                     ),
                                     Text(
                                       quantity.toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Color(0xffE40045),
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     IconButton(
-                                      icon: Icon(Icons.add),
+                                      icon: const Icon(Icons.add),
                                       onPressed: quantity.decrementQuantity,
-                                      color: Color(0xffE40045),
+                                      color: const Color(0xffE40045),
                                     ),
                                   ],
                                 ),

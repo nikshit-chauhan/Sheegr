@@ -1,6 +1,9 @@
+// ignore_for_file: must_be_immutable, prefer_final_fields
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sheegr/View/screens/Categories%20List/categories_list.dart';
 
 import '../../../Controller/quantity_controller.dart';
 import '../../../Resources/fontstyle.dart';
@@ -19,21 +22,21 @@ class ParticularCategoryList extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: Icon(Icons.remove),
+            icon: const Icon(Icons.remove),
             onPressed: quantity.decrementQuantity,
-            color: Color(0xffE40045),
+            color: const Color(0xffE40045),
           ),
           Text(
             quantity.toString(),
-            style: TextStyle(
+            style: const TextStyle(
                 color: Color(0xffE40045),
                 fontSize: 20,
                 fontWeight: FontWeight.bold),
           ),
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: quantity.incrementQuantity,
-            color: Color(0xffE40045),
+            color: const Color(0xffE40045),
           ),
         ],
       ),
@@ -50,23 +53,25 @@ class ParticularCategoryList extends StatelessWidget {
             snap: false,
             floating: false,
             expandedHeight: 160,
-            backgroundColor: Color(0xffE40045).withOpacity(1),
-            leading: GestureDetector(
-                onTap: () {
-                  Transition.leftToRight;
-                  const Duration(milliseconds: 600);
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back, color: Colors.black)),
+            backgroundColor: const Color(0xffE40045).withOpacity(1),
+            leading: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios_new,
+                color: Colors.black,
+              ),
+              onPressed: () => Get.offAll(const CategoriesList(),
+                  transition: Transition.cupertino,
+                  duration: const Duration(milliseconds: 600)),
+            ),
             flexibleSpace: FlexibleSpaceBar(
-              title: AutoSizeText(
+              title: const AutoSizeText(
                 'Category Name',
                 style: TextStyle(color: Colors.black),
                 textAlign: TextAlign.left,
               ),
               background: ColorFiltered(
                   colorFilter: ColorFilter.mode(
-                      Color.fromARGB(255, 255, 243, 243).withOpacity(0.5),
+                      const Color.fromARGB(255, 255, 243, 243).withOpacity(0.5),
                       BlendMode.srcOver),
                   child: Hero(
                     tag: 'new1',
@@ -106,10 +111,10 @@ class ParticularCategoryList extends StatelessWidget {
                       );
                     },
                     child: Card(
-                      shadowColor: Color(0xffE40045).withOpacity(0.8),
+                      shadowColor: const Color(0xffE40045).withOpacity(0.8),
                       elevation: 3,
                       shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.transparent),
+                          side: const BorderSide(color: Colors.transparent),
                           borderRadius: BorderRadius.circular(15)),
                       child: Container(
                         color: Colors.transparent,
@@ -129,7 +134,7 @@ class ParticularCategoryList extends StatelessWidget {
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width * 0.7,
-                                    child: AutoSizeText(
+                                    child: const AutoSizeText(
                                       "fsdfsd /sdfsdf 4443324/ weifuei / fwehf efwrfrw",
                                       maxLines: 2,
                                       maxFontSize: 17,
@@ -137,7 +142,7 @@ class ParticularCategoryList extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
-                                  AutoSizeText(
+                                  const AutoSizeText(
                                     "₹323",
                                     maxFontSize: 16,
                                     minFontSize: 10,
@@ -147,7 +152,7 @@ class ParticularCategoryList extends StatelessWidget {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 0, 0, 0)
+                                color: const Color.fromARGB(255, 0, 0, 0)
                                     .withOpacity(0.04),
                                 borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(15),
@@ -155,7 +160,7 @@ class ParticularCategoryList extends StatelessWidget {
                                 ),
                               ),
                               child: ListTile(
-                                  title: AutoSizeText("Add to cart",
+                                  title: const AutoSizeText("Add to cart",
                                       style: TextStyle(color: Colors.black)),
                                   trailing: GestureDetector(
                                     onTap: () {
@@ -169,9 +174,9 @@ class ParticularCategoryList extends StatelessWidget {
                                     child: _isShow
                                         ? addToCardWidget()
                                         : Card(
-                                            color: Color(0xffE40045),
+                                            color: const Color(0xffE40045),
                                             shape: RoundedRectangleBorder(
-                                                side: BorderSide(
+                                                side: const BorderSide(
                                                     color: Colors.transparent),
                                                 borderRadius:
                                                     BorderRadius.circular(0)),
