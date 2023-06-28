@@ -44,7 +44,7 @@ class _NewTextFieldState extends State<NewTextField> {
       validator: widget.validator,
       controller: widget.textEditingController,
       keyboardType: widget.textInputType,
-      inputFormatters: [],
+      inputFormatters: const [],
       style: AppFontStyle.headerStyle1().copyWith(
         fontWeight: FontWeight.normal,
         fontSize: 18,

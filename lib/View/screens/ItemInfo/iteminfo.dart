@@ -55,7 +55,7 @@ class ItemInfo extends StatelessWidget {
                 child: Hero(
                     transitionOnUserGestures: true,
                     tag: 'image1',
-                    child: Image.asset("assets/icons/friedfish.PNG")),
+                    child: Image.asset("lib/Assets/Images/friedfish.png")),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.03,
@@ -96,7 +96,7 @@ class ItemInfo extends StatelessWidget {
                                   child: ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
                                       child: Image.asset(
-                                        "lib/Assets/images/friedfish.PNG",
+                                        "lib/Assets/Images/friedfish.png",
                                         fit: BoxFit.cover,
                                       ))),
                               const Expanded(
@@ -136,9 +136,10 @@ class ItemInfo extends StatelessWidget {
                                       onPressed: quantity.incrementQuantity,
                                       color: const Color(0xffE40045),
                                     ),
-                                    Text(
-                                      quantity.toString(),
-                                      style: const TextStyle(
+                                    const Text(
+                                      // quantity.toString(),
+                                      "0",
+                                      style: TextStyle(
                                           color: Color(0xffE40045),
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),

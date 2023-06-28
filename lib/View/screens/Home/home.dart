@@ -381,7 +381,7 @@ class Home extends StatelessWidget {
             return GestureDetector(
               onTap: () {
                 Get.to(
-                  () => ItemInfo(imagePath: "lib/Assets/Images/friedfish.PNG"),
+                  () => ItemInfo(imagePath: "lib/Assets/Images/friedfish.png"),
                   transition: Transition.cupertino,
                   duration: const Duration(milliseconds: 600),
                 );
@@ -410,7 +410,7 @@ class Home extends StatelessWidget {
                     Hero(
                         transitionOnUserGestures: true,
                         tag: 'image1',
-                        child: Image.asset("assets/icons/friedfish.PNG")),
+                        child: Image.asset("lib/Assets/Images/friedfish.png")),
                     // Image.asset("assets/icons/logotwo.png"),
                     Container(
                       decoration: BoxDecoration(

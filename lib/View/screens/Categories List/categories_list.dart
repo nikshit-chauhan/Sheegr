@@ -68,10 +68,11 @@ class CategoriesList extends StatelessWidget {
                                 Hero(
                                     tag: 'new1',
                                     child: Image.asset(
-                                        "assets/icons/friedfish.PNG")),
+                                        "lib/Assets/Images/friedfish.png")),
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: const Color(0xffE40045).withOpacity(0.8),
+                                    color: const Color(0xffE40045)
+                                        .withOpacity(0.8),
                                     borderRadius: const BorderRadius.only(
                                       bottomLeft: Radius.circular(15),
                                       bottomRight: Radius.circular(15),

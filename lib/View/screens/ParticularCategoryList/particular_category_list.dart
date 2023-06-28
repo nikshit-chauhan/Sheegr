@@ -76,7 +76,7 @@ class ParticularCategoryList extends StatelessWidget {
                   child: Hero(
                     tag: 'new1',
                     child: Image.asset(
-                      "assets/icons/friedfish.PNG",
+                      "lib/Assets/Images/friedfish.png",
                       fit: BoxFit.fill,
                     ),
                   )),
@@ -104,7 +104,7 @@ class ParticularCategoryList extends StatelessWidget {
                     onTap: () {
                       Get.to(
                         () => ItemInfo(
-                          imagePath: "assets/icons/friedfish.PNG",
+                          imagePath: "assets/icons/friedfish.png",
                         ),
                         transition: Transition.cupertino,
                         duration: const Duration(milliseconds: 600),
@@ -126,7 +126,7 @@ class ParticularCategoryList extends StatelessWidget {
                               leading: ClipRRect(
                                   borderRadius: BorderRadius.circular(10),
                                   child: Image.asset(
-                                    "lib/Assets/images/friedfish.PNG",
+                                    "lib/Assets/Images/friedfish.png",
                                   )),
                               title: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
