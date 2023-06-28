@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:sheegr/Resources/colors.dart';
-import 'package:sheegr/View/screens/main_screen.dart';
+// import 'package:sheegr/View/screens/main_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../Resources/strings.dart';
+import '../Home/home.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
   final String? mobileNumber;
@@ -129,7 +130,7 @@ class OtpVerificationScreen extends StatelessWidget {
                         width: size.width * .9,
                         child: ElevatedButton(
                           onPressed: () {
-                            Get.offAll(const MainScreen());
+                            Get.offAll(Home());
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: colorPrimary,

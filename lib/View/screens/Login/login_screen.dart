@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
-            ),
+            ),  
             onPressed: () => Get.off(
               const MainScreen(),
             ),
@@ -60,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                         const Text(
                           Strings.login,
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 30, 
                             fontFamily: "Quicksand-Bold",
                           ),
                         ),
@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                          height: 45,
+                           height: 45,
                         ),
                         Column(
                           children: [
