@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sheegr/View/screens/splash_screen.dart';
 
 void main() {
+  //add firebase auth here
   runApp(const MyApp());
 }
 
