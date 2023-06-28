@@ -133,9 +133,10 @@ class ItemInfo extends StatelessWidget {
                                   children: [
                                     IconButton(
                                       icon: const Icon(Icons.remove),
-                                      onPressed: quantity.incrementQuantity,
+                                      onPressed: quantity.decrementQuantity,
                                       color: const Color(0xffE40045),
                                     ),
+                                    //TODO: Need to implement Getx addQuantity Method
                                     const Text(
                                       // quantity.toString(),
                                       "0",
@@ -146,7 +147,7 @@ class ItemInfo extends StatelessWidget {
                                     ),
                                     IconButton(
                                       icon: const Icon(Icons.add),
-                                      onPressed: quantity.decrementQuantity,
+                                      onPressed: quantity.incrementQuantity,
                                       color: const Color(0xffE40045),
                                     ),
                                   ],

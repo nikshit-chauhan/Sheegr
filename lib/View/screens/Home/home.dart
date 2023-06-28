@@ -6,6 +6,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sheegr/Resources/Colors.dart';
+import 'package:sheegr/View/screens/AboutUs/about_us.dart';
+import 'package:sheegr/View/screens/ContactUs/contact_us.dart';
+import 'package:sheegr/View/screens/FAQ/faq.dart';
+import 'package:sheegr/View/screens/PrivacyPolicy/privacy_policy.dart';
+import 'package:sheegr/View/screens/TermsAndCondition/terms_and_condition.dart';
 // import 'package:dots_indicator/dots_indicator.dart';
 // import 'package:getwidget/getwidget.dart';
 
@@ -14,6 +20,7 @@ import '../../../Resources/fontstyle.dart';
 import '../../../Utils/Widgets/drawertile.dart';
 import '../Categories List/categories_list.dart';
 import '../ItemInfo/iteminfo.dart';
+import '../Profile/profile_screen.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -63,13 +70,15 @@ class Home extends StatelessWidget {
                 icon: const Icon(Icons.menu,
                     size: 30, color: Color.fromARGB(255, 0, 0, 0)))),
       ),
+
+      bottom: preferredSizedWidget(),
       actions: [
         Row(
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.75,
               child: AutoSizeText(
-                'diufhiryhf weygwyefgwefw',
+                'Abbigere',
                 style: AppFontStyle.flexibleFontStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
@@ -80,20 +89,45 @@ class Home extends StatelessWidget {
                 textAlign: TextAlign.right,
               ),
             ),
-            // SizedBox(width: 5),
+            const SizedBox(width: 15),
             // Text("Location rjkerk;ger"),
             const Icon(
               Icons.location_on,
-              color: Color(0xffE40045),
+              color: Colors.white,
               size: 35,
             ),
+            const SizedBox(width: 15),
           ],
-        )
+        ),
       ],
       // centerTitle: true,
       elevation: 0,
       // backgroundColor: Color.fromRGBO(254, 206, 38, 1),
-      backgroundColor: Colors.transparent,
+      backgroundColor: colorPrimary,
+    );
+  }
+
+  PreferredSizeWidget preferredSizedWidget() {
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(100),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 2,
+          shadowColor: const Color(0xffE40045).withRed(200),
+          color: Colors.white,
+          child: ListTile(
+            title: NewTextField(
+              hintText: "Search for fishes",
+            ),
+            trailing: const Icon(
+              Icons.search_sharp,
+              color: Color(0xffE40045),
+              size: 32,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -164,15 +198,67 @@ class Home extends StatelessWidget {
           children: [
             const Spacer(),
             DrawerTiles(
-                icon: Icons.person_2, tileTitle: 'My Profile', onTap: () {}),
-            const Spacer(),
+                icon: Icons.trolley,
+                tileTitle: 'Orders',
+                onTap: () {
+                  //Get.to(() => ProfileScreen());
+                }),
             DrawerTiles(
-                icon: Icons.history_sharp,
-                tileTitle: 'Order History',
-                onTap: () {}),
-            const Spacer(),
+                icon: Icons.person,
+                tileTitle: 'My Profile',
+                onTap: () {
+                  Get.to(() => ProfileScreen());
+                }),
             DrawerTiles(
-                icon: Icons.settings, tileTitle: 'Settings', onTap: () {}),
+                icon: Icons.abc,
+                tileTitle: 'Saved Addresses',
+                onTap: () {
+                  //Get.to(() => ProfileScreen());
+                }),
+            DrawerTiles(
+                icon: Icons.abc,
+                tileTitle: 'Wishlist',
+                onTap: () {
+                  //Get.to(() => ProfileScreen());
+                }),
+            DrawerTiles(
+                icon: Icons.notifications,
+                tileTitle: 'Notifications',
+                onTap: () {
+                  //Get.to(() => ProfileScreen());
+                }),
+            DrawerTiles(
+                icon: Icons.person_2,
+                tileTitle: 'About Us',
+                onTap: () {
+                  Get.to(() => const AboutUs());
+                }),
+            DrawerTiles(
+                icon: Icons.call,
+                tileTitle: 'Contact Us',
+                onTap: () {
+                  Get.to(() => const ContactUs());
+                }),
+            DrawerTiles(
+                icon: Icons.question_answer_outlined,
+                tileTitle: 'FAQ',
+                onTap: () {
+                  Get.to(() => const FAQ());
+                }),
+            DrawerTiles(
+                icon: Icons.notes,
+                tileTitle: 'Terms And Conditions',
+                onTap: () {
+                  Get.to(() => const TermsAndConditon());
+                }),
+            //const Spacer(),
+            DrawerTiles(
+                icon: Icons.privacy_tip_outlined,
+                tileTitle: 'Privacy Policy',
+                onTap: () {
+                  Get.to(() => const PrivacyPolicy());
+                }),
+
             const Spacer(
               flex: 20,
             ),
@@ -184,30 +270,6 @@ class Home extends StatelessWidget {
       ],
     );
   }
-
-  // Widget cardWidget1() {
-  //   return SizedBox(
-  //     height: MediaQuery.of(context).size.height * 0.1,
-  //     child: ListView.builder(
-  //         scrollDirection: Axis.horizontal,
-  //         itemCount: 10,
-  //         itemBuilder: (BuildContext context, int index) {
-  //           return GestureDetector(
-  //               onTap: () {
-  //                 Get.to(
-  //                   () => DetailedInformation(),
-  //                   transition: Transition.rightToLeft,
-  //                   duration: const Duration(milliseconds: 600),
-  //                 );
-  //               },
-  //               child: Padding(
-  //                 padding: const EdgeInsets.all(8.0),
-  //                 child:
-  //                     CategoryButton(icon: Icons.fastfood, label: 'Fast Food'),
-  //               ));
-  //         }),
-  //   );
-  // }
 
   Widget cardWidget2() {
     return ListView.builder(
@@ -487,25 +549,6 @@ class Home extends StatelessWidget {
           children: [
             // Spacer(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                  elevation: 2,
-                  shadowColor: const Color(0xffE40045).withRed(200),
-                  // surfaceTintColor: Colors.blueGrey,
-                  color: Colors.white,
-                  child: ListTile(
-                    title: NewTextField(
-                      // autoFocus: false,
-                      hintText: "Search for fishes",
-                    ),
-                    trailing: const Icon(
-                      Icons.search_sharp,
-                      color: Color(0xffE40045),
-                      size: 32,
-                    ),
-                  )),
-            ),
             // Spacer(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
