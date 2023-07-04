@@ -144,8 +144,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Obx(() {
                           final isValidNumber =
-                              phoneNumberController.mobileNumber.value.length ==
-                                  10;
+                              phoneNumberController.mobileNumber.toString().length == 10;
                           return SizedBox(
                             width: double.infinity,
                             height: 50.0,

@@ -133,7 +133,7 @@ class ItemInfo extends StatelessWidget {
                                   children: [
                                     IconButton(
                                       icon: const Icon(Icons.remove),
-                                      onPressed: quantity.incrementQuantity,
+                                      onPressed: quantity.increaseQuantity,
                                       color: const Color(0xffE40045),
                                     ),
                                     const Text(

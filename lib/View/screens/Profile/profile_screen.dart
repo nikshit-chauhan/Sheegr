@@ -137,9 +137,9 @@ class ProfileScreen extends StatelessWidget {
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: 'Email',
-                              errorText: controller.showError.value
-                                  ? 'Invalid Email'
-                                  : null,
+                              // errorText: controller.showError.value
+                              // ? 'Invalid Email'
+                              // : null,
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.grey.shade300,
@@ -179,7 +179,8 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         Obx(() {
                           return DropdownButton<String>(
-                            value: selectedCategory.value,
+                            // value: selectedCategory.value,
+                            value: "",
                             items: categories.map((category) {
                               return DropdownMenuItem(
                                 value: category,

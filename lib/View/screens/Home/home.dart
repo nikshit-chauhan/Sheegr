@@ -4,20 +4,29 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sheegr/Utils/Widgets/indernet_connection_widget.dart';
 // import 'package:dots_indicator/dots_indicator.dart';
 // import 'package:getwidget/getwidget.dart';
 
+// import '../../../Controller/connection_manager_controller.dart';
 import '../../../Resources/New_textfield.dart';
 import '../../../Resources/fontstyle.dart';
 import '../../../Utils/Widgets/drawertile.dart';
+import '../../../Utils/Widgets/no_internet.dart';
 import '../Categories List/categories_list.dart';
 import '../ItemInfo/iteminfo.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Home({super.key});
+
+  // final ConnectionManagerController _controller =
+  //     Get.find<ConnectionManagerController>();
+
+  Connectivity connectivity = Connectivity();
 
   // Future<bool> onWillPop() async {
   //   return (await showDialog(
@@ -481,106 +490,112 @@ class Home extends StatelessWidget {
         child: drawerWidget(context),
       ),
       appBar: AppBarWidget(context),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Spacer(),
-
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                  elevation: 2,
-                  shadowColor: const Color(0xffE40045).withRed(200),
-                  // surfaceTintColor: Colors.blueGrey,
-                  color: Colors.white,
-                  child: ListTile(
-                    title: NewTextField(
-                      // autoFocus: false,
-                      hintText: "Search for fishes",
-                    ),
-                    trailing: const Icon(
-                      Icons.search_sharp,
-                      color: Color(0xffE40045),
-                      size: 32,
-                    ),
-                  )),
-            ),
-            // Spacer(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: StreamBuilder<ConnectivityResult>(
+          stream: connectivity.onConnectivityChanged,
+          builder: (_, snapshot) {
+            return InternetConnectionWidget(
+              snapshot: snapshot,
+              widget: SingleChildScrollView(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AutoSizeText(
-                    'Categories',
-                    style: AppFontStyle.flexibleFontStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20,
-                        fontColor: Colors.black),
-                    minFontSize: 14,
-                    maxFontSize: 20,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.left,
+                  // Spacer(),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                        elevation: 2,
+                        shadowColor: const Color(0xffE40045).withRed(200),
+                        // surfaceTintColor: Colors.blueGrey,
+                        color: Colors.white,
+                        child: ListTile(
+                          title: NewTextField(
+                            // autoFocus: false,
+                            hintText: "Search for fishes",
+                          ),
+                          trailing: const Icon(
+                            Icons.search_sharp,
+                            color: Color(0xffE40045),
+                            size: 32,
+                          ),
+                        )),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(
-                        () => const CategoriesList(),
-                        transition: Transition.rightToLeft,
-                        duration: const Duration(milliseconds: 600),
-                      );
-                    },
+                  // Spacer(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AutoSizeText(
-                          'View All',
+                          'Categories',
                           style: AppFontStyle.flexibleFontStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              fontColor: Colors.black26),
-                          minFontSize: 8,
-                          maxFontSize: 13,
+                              fontSize: 20,
+                              fontColor: Colors.black),
+                          minFontSize: 14,
+                          maxFontSize: 20,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
                         ),
-                        const Icon(
-                          Icons.arrow_right_alt_outlined,
-                          size: 25,
-                          color: Colors.black26,
-                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(
+                              () => const CategoriesList(),
+                              transition: Transition.rightToLeft,
+                              duration: const Duration(milliseconds: 600),
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              AutoSizeText(
+                                'View All',
+                                style: AppFontStyle.flexibleFontStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    fontColor: Colors.black26),
+                                minFontSize: 8,
+                                maxFontSize: 13,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.left,
+                              ),
+                              const Icon(
+                                Icons.arrow_right_alt_outlined,
+                                size: 25,
+                                color: Colors.black26,
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  )
+                  ),
+
+                  cardWidget2(),
+                  // Spacer(),
+                  // Card(
+                  //     elevation: 0,
+                  //     clipBehavior: Clip.antiAliasWithSaveLayer,
+                  //     semanticContainer: true,
+                  //     shape: RoundedRectangleBorder(
+                  //       side: const BorderSide(
+                  //         color: Colors.transparent,
+                  //       ),
+                  //       borderRadius: BorderRadius.circular(0.0),
+                  //     ),
+                  //     color: Color(0xffE0E0E0),
+                  //     child: null
+                  //     // carouselWidget()
+                  //     ),
+                  // Spacer(),
+
+                  todaysoffer()
                 ],
-              ),
-            ),
-
-            cardWidget2(),
-            // Spacer(),
-            // Card(
-            //     elevation: 0,
-            //     clipBehavior: Clip.antiAliasWithSaveLayer,
-            //     semanticContainer: true,
-            //     shape: RoundedRectangleBorder(
-            //       side: const BorderSide(
-            //         color: Colors.transparent,
-            //       ),
-            //       borderRadius: BorderRadius.circular(0.0),
-            //     ),
-            //     color: Color(0xffE0E0E0),
-            //     child: null
-            //     // carouselWidget()
-            //     ),
-            // Spacer(),
-
-            todaysoffer()
-          ],
-        ),
-      ),
+              )),
+            );
+          }),
     );
   }
 }

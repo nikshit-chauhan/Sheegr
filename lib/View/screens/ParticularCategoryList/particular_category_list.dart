@@ -35,7 +35,7 @@ class ParticularCategoryList extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: quantity.incrementQuantity,
+            onPressed: quantity.increaseQuantity,
             color: const Color(0xffE40045),
           ),
         ],
