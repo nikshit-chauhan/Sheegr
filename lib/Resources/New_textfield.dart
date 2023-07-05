@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, file_names
 
 import 'package:flutter/material.dart';
 import '../Resources/fontstyle.dart';
@@ -57,8 +57,8 @@ class _NewTextFieldState extends State<NewTextField> {
           ),
           borderSide: BorderSide(color: Colors.transparent, width: 0),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(
+        enabledBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
             Radius.circular(5.0),
           ),
           borderSide: BorderSide(color: Colors.transparent, width: 0),

@@ -22,7 +22,7 @@ class DrawerTiles extends StatelessWidget {
         child: Icon(
           icon,
           size: 27,
-          color: Color.fromARGB(255, 0, 0, 0), 
+          color: const Color.fromARGB(255, 0, 0, 0), 
         ),
       ),
       title: GestureDetector(

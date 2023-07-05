@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class Strings {
   static const String appname = "SHEEGR";
   static const String login = "Login";

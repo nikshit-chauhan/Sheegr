@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,12 +20,12 @@ class InternetConnectionWidget extends StatelessWidget {
         final state = snapshot.data!;
         switch (state) {
           case ConnectivityResult.none:
-            return NoInternet();
+            return const NoInternet();
           default:
             return widget;
         }
       default:
-        return Text("");
+        return const Text("");
     }
   }
 }

@@ -1,7 +1,7 @@
 // import 'dart:io';
 // import 'dart:js';
 
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, avoid_print, sort_child_properties_last
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -15,7 +15,6 @@ import 'package:sheegr/Utils/Widgets/indernet_connection_widget.dart';
 import '../../../Resources/New_textfield.dart';
 import '../../../Resources/fontstyle.dart';
 import '../../../Utils/Widgets/drawertile.dart';
-import '../../../Utils/Widgets/no_internet.dart';
 import '../Categories List/categories_list.dart';
 import '../ItemInfo/iteminfo.dart';
 
