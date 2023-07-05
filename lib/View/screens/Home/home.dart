@@ -266,7 +266,8 @@ class Home extends StatelessWidget {
       },
     );
   }
-  //! removed as of now (not required)
+
+  /// removed as of now (not required)
 
   // Widget carouselWidget(BuildContext context) {
   //   return Padding(
