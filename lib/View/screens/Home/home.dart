@@ -7,14 +7,17 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sheegr/Resources/Colors.dart';
 import 'package:sheegr/Utils/Widgets/indernet_connection_widget.dart';
 // import 'package:dots_indicator/dots_indicator.dart';
 // import 'package:getwidget/getwidget.dart';
 
 // import '../../../Controller/connection_manager_controller.dart';
+import '../../../Controller/home_page_controller.dart';
 import '../../../Resources/New_textfield.dart';
 import '../../../Resources/fontstyle.dart';
 import '../../../Utils/Widgets/drawertile.dart';
+import '../Account/account.dart';
 import '../Categories List/categories_list.dart';
 import '../ItemInfo/iteminfo.dart';
 
@@ -26,6 +29,87 @@ class Home extends StatelessWidget {
   //     Get.find<ConnectionManagerController>();
 
   Connectivity connectivity = Connectivity();
+
+  buildBottomNavigationMenu(context, landingPageController) {
+    return Obx(() => MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+        child: SizedBox(
+          height: 70,
+          child: BottomNavigationBar(
+            elevation: 20,
+            showUnselectedLabels: true,
+            showSelectedLabels: true,
+            onTap: landingPageController.changeTabIndex,
+            currentIndex: landingPageController.tabIndex.value,
+            backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+            unselectedItemColor: Colors.black.withOpacity(0.5),
+            selectedItemColor: colorPrimary,
+            unselectedLabelStyle: TextStyle(
+                color: Colors.white.withOpacity(0.5),
+                fontWeight: FontWeight.w500,
+                fontSize: 12),
+            selectedLabelStyle: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12),
+            items: [
+              BottomNavigationBarItem(
+                icon: Container(
+                    margin: EdgeInsets.only(bottom: 7),
+                    child: Image.asset("lib/Assets/Images/notifylogo.png",
+                        height: 34,
+                        color: landingPageController.tabIndex.value == 0
+                            ? colorPrimary
+                            : Colors.black.withOpacity(0.5))),
+                label: 'Home',
+                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                    margin: EdgeInsets.only(bottom: 7),
+                    child: Image.asset("lib/Assets/Images/categories.png",
+                        height: 34,
+                        color: landingPageController.tabIndex.value == 1
+                            ? colorPrimary
+                            : Colors.black.withOpacity(0.5))),
+                label: 'Categories',
+                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                    margin: EdgeInsets.only(bottom: 7),
+                    child: Image.asset("lib/Assets/Images/wishlist.png",
+                        height: 34,
+                        color: landingPageController.tabIndex.value == 2
+                            ? colorPrimary
+                            : Colors.black.withOpacity(0.5))),
+                label: 'Wishlist',
+                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                    margin: EdgeInsets.only(bottom: 7),
+                    child: Image.asset("lib/Assets/Images/shoppingCart.png",
+                        height: 34,
+                        color: landingPageController.tabIndex.value == 3
+                            ? colorPrimary
+                            : Colors.black.withOpacity(0.5))),
+                label: 'Cart',
+                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              ),
+              BottomNavigationBarItem(
+                icon: Container(
+                    margin: EdgeInsets.only(bottom: 7),
+                    child: Image.asset("lib/Assets/Images/Account2.png",
+                        height: 34,
+                        color: landingPageController.tabIndex.value == 4
+                            ? colorPrimary
+                            : Colors.black.withOpacity(0.5))),
+                label: 'Account',
+                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              ),
+            ],
+          ),
+        )));
+  }
 
   // Future<bool> onWillPop() async {
   //   return (await showDialog(
@@ -59,137 +143,121 @@ class Home extends StatelessWidget {
 
   AppBarWidget(BuildContext context) {
     return AppBar(
-      leading: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Align(
-            alignment: Alignment.topLeft,
-            child: IconButton(
-                onPressed: () {
-                  print("Drawer icon tapper");
-                  _scaffoldKey.currentState!.openDrawer();
-                },
-                icon: const Icon(Icons.menu,
-                    size: 30, color: Color.fromARGB(255, 0, 0, 0)))),
-      ),
-      actions: [
-        Row(
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.75,
-              child: AutoSizeText(
-                'diufhiryhf weygwyefgwefw',
+      bottom: preferredSizedWidget(),
+      leadingWidth: 150,
+      // centerTitle: false,
+      leading: Align(
+          alignment: Alignment.centerLeft,
+          child: Row(
+            children: [
+              Image.asset(
+                "lib/Assets/Images/location_new.png",
+                height: 27,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+                color: Colors.white,
+              ),
+              AutoSizeText(
+                'Paragoan',
                 style: AppFontStyle.flexibleFontStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                    fontColor: Colors.black),
+                    fontSize: 18,
+                    fontColor: const Color.fromARGB(255, 255, 255, 255)),
                 minFontSize: 10,
-                maxFontSize: 16,
+                maxFontSize: 18,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.right,
               ),
+              Image.asset(
+                "lib/Assets/Images/downwhite.png",
+                height: 25,
+              )
+            ],
+          )),
+      // title: Row(
+      //   mainAxisAlignment: MainAxisAlignment.start,
+      //   children: [
+      //     AutoSizeText(
+      //       'Paragoan',
+      //       style: AppFontStyle.flexibleFontStyle(
+      //           fontWeight: FontWeight.w500,
+      //           fontSize: 18,
+      //           fontColor: const Color.fromARGB(255, 255, 255, 255)),
+      //       minFontSize: 10,
+      //       maxFontSize: 18,
+      //       overflow: TextOverflow.ellipsis,
+      //       textAlign: TextAlign.right,
+      //     ),
+      //     Image.asset(
+      //       "lib/Assets/Images/downwhite.png",
+      //       height: 25,
+
+      //     )
+      //   ],
+      // ),
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(
+              "lib/Assets/Images/store1.png",
+              height: 24,
+              fit: BoxFit.fill,
+              filterQuality: FilterQuality.high,
+              color: Colors.white,
+              // width: 40,
             ),
-            // SizedBox(width: 5),
+            const SizedBox(width: 8),
+            AutoSizeText( 
+              'Abbigere',
+              style: AppFontStyle.flexibleFontStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  fontColor: const Color.fromARGB(255, 255, 255, 255)),
+              minFontSize: 10,
+              maxFontSize: 18,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.right,
+            ),
+            Image.asset(
+              "lib/Assets/Images/downwhite.png",
+              height: 25,
+            ),
+
             // Text("Location rjkerk;ger"),
-            const Icon(
-              Icons.location_on,
-              color: Color(0xffE40045),
-              size: 35,
-            ),
+
+            const SizedBox(width: 15),
           ],
-        )
+        ),
       ],
       // centerTitle: true,
       elevation: 0,
       // backgroundColor: Color.fromRGBO(254, 206, 38, 1),
-      backgroundColor: Colors.transparent,
+      backgroundColor: colorPrimary,
     );
   }
 
-  Widget drawerWidget(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.2,
-          child: Container(
-            color: const Color(0xffE40045),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.02),
-                      const CircleAvatar(
-                        backgroundColor: Colors.white54,
-                        child: Icon(
-                          Icons.person_3,
-                          color: Colors.black,
-                          size: 35,
-                        ),
-                        radius: 40,
-                      ),
-
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-
-                      Column(
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.45,
-                            child: Text("Chinmay Chauhan",
-                                style: AppFontStyle.flexibleFontStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: AppFontStyle.regularFont),
-                                // style: const TextStyle(
-                                //     fontSize: 15, fontWeight: FontWeight.w700),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2),
-                          ),
-                          Text("+91-6265640048",
-                              style: AppFontStyle.flexibleFontStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w700),
-                              // style: const TextStyle(
-                              //     fontSize: 15, fontWeight: FontWeight.w600),
-                              overflow: TextOverflow.ellipsis),
-                        ],
-                      ),
-                      // const Spacer(flex: 9),
-                    ],
-                  ),
-                ),
-              ],
+  PreferredSizeWidget preferredSizedWidget() {
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(100),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          elevation: 2,
+          shadowColor: const Color(0xffE40045).withRed(200),
+          color: Colors.white,
+          child: ListTile(
+            title: NewTextField(
+              hintText: "Search for fishes",
+            ),
+            trailing: const Icon(
+              Icons.search_sharp,
+              color: Color(0xffE40045),
+              size: 32,
             ),
           ),
         ),
-        Expanded(
-            child: Column(
-          children: [
-            const Spacer(),
-            DrawerTiles(
-                icon: Icons.person_2, tileTitle: 'My Profile', onTap: () {}),
-            const Spacer(),
-            DrawerTiles(
-                icon: Icons.history_sharp,
-                tileTitle: 'Order History',
-                onTap: () {}),
-            const Spacer(),
-            DrawerTiles(
-                icon: Icons.settings, tileTitle: 'Settings', onTap: () {}),
-            const Spacer(
-              flex: 20,
-            ),
-            DrawerTiles(
-                icon: Icons.logout_sharp, tileTitle: 'logout', onTap: () {}),
-            const Spacer()
-          ],
-        ))
-      ],
+      ),
     );
   }
 
@@ -474,125 +542,110 @@ class Home extends StatelessWidget {
 
   int dotValue = 0;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      drawer: Drawer(
-        width: MediaQuery.of(context).size.width * 0.75,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(20),
-            bottomRight: Radius.circular(20),
+  SingleChildScrollView homwLandingScreen(BuildContext context) {
+    return SingleChildScrollView(
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.03,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AutoSizeText(
+                'Categories',
+                style: AppFontStyle.flexibleFontStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                    fontColor: Colors.black),
+                minFontSize: 14,
+                maxFontSize: 20,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => const CategoriesList(),
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(milliseconds: 600),
+                  );
+                },
+                child: Row(
+                  children: [
+                    AutoSizeText(
+                      'View All',
+                      style: AppFontStyle.flexibleFontStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13,
+                          fontColor: Colors.black26),
+                      minFontSize: 8,
+                      maxFontSize: 13,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.left,
+                    ),
+                    const Icon(
+                      Icons.arrow_right_alt_outlined,
+                      size: 25,
+                      color: Colors.black26,
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
-        child: drawerWidget(context),
-      ),
+
+        cardWidget2(),
+        // Spacer(),
+        // Card(
+        //     elevation: 0,
+        //     clipBehavior: Clip.antiAliasWithSaveLayer,
+        //     semanticContainer: true,
+        //     shape: RoundedRectangleBorder(
+        //       side: const BorderSide(
+        //         color: Colors.transparent,
+        //       ),
+        //       borderRadius: BorderRadius.circular(0.0),
+        //     ),
+        //     color: Color(0xffE0E0E0),
+        //     child: null
+        //     // carouselWidget()
+        //     ),
+        // Spacer(),
+
+        todaysoffer()
+      ],
+    ));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final HomePageController homePageController =
+        Get.put(HomePageController(), permanent: true);
+    return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBarWidget(context),
+      bottomNavigationBar:
+          buildBottomNavigationMenu(context, homePageController),
       body: StreamBuilder<ConnectivityResult>(
           stream: connectivity.onConnectivityChanged,
           builder: (_, snapshot) {
             return InternetConnectionWidget(
               snapshot: snapshot,
-              widget: SingleChildScrollView(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Spacer(),
-
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                        elevation: 2,
-                        shadowColor: const Color(0xffE40045).withRed(200),
-                        // surfaceTintColor: Colors.blueGrey,
-                        color: Colors.white,
-                        child: ListTile(
-                          title: NewTextField(
-                            // autoFocus: false,
-                            hintText: "Search for fishes",
-                          ),
-                          trailing: const Icon(
-                            Icons.search_sharp,
-                            color: Color(0xffE40045),
-                            size: 32,
-                          ),
-                        )),
-                  ),
-                  // Spacer(),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AutoSizeText(
-                          'Categories',
-                          style: AppFontStyle.flexibleFontStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                              fontColor: Colors.black),
-                          minFontSize: 14,
-                          maxFontSize: 20,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.left,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(
-                              () => const CategoriesList(),
-                              transition: Transition.rightToLeft,
-                              duration: const Duration(milliseconds: 600),
-                            );
-                          },
-                          child: Row(
-                            children: [
-                              AutoSizeText(
-                                'View All',
-                                style: AppFontStyle.flexibleFontStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13,
-                                    fontColor: Colors.black26),
-                                minFontSize: 8,
-                                maxFontSize: 13,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                              ),
-                              const Icon(
-                                Icons.arrow_right_alt_outlined,
-                                size: 25,
-                                color: Colors.black26,
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-
-                  cardWidget2(),
-                  // Spacer(),
-                  // Card(
-                  //     elevation: 0,
-                  //     clipBehavior: Clip.antiAliasWithSaveLayer,
-                  //     semanticContainer: true,
-                  //     shape: RoundedRectangleBorder(
-                  //       side: const BorderSide(
-                  //         color: Colors.transparent,
-                  //       ),
-                  //       borderRadius: BorderRadius.circular(0.0),
-                  //     ),
-                  //     color: Color(0xffE0E0E0),
-                  //     child: null
-                  //     // carouselWidget()
-                  //     ),
-                  // Spacer(),
-
-                  todaysoffer()
-                ],
-              )),
+              widget: Obx(() => IndexedStack(
+                    index: homePageController.tabIndex.value,
+                    children: [
+                      homwLandingScreen(context),
+                      CategoriesList(),
+                      CategoriesList(),
+                      CategoriesList(),
+                      Account()
+                    ],
+                  )),
             );
           }),
     );

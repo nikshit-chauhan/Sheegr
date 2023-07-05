@@ -30,6 +30,7 @@ class DrawerTiles extends StatelessWidget {
         child: Text(tileTitle,style: AppFontStyle.
                              flexibleFontStyle(fontSize: 13,fontWeight: FontWeight.w600),),
       ),
+      trailing: const Icon(Icons.arrow_forward_ios_outlined,size: 17,),
     );
   }
 }
