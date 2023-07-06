@@ -1,7 +1,7 @@
 // import 'dart:io';
 // import 'dart:js';
 
-// ignore_for_file: must_be_immutable, non_constant_identifier_names, avoid_print, sort_child_properties_last
+// ignore_for_file: must_be_immutable
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -12,11 +12,9 @@ import 'package:sheegr/Utils/Widgets/indernet_connection_widget.dart';
 // import 'package:dots_indicator/dots_indicator.dart';
 // import 'package:getwidget/getwidget.dart';
 
-// import '../../../Controller/connection_manager_controller.dart';
 import '../../../Controller/home_page_controller.dart';
 import '../../../Resources/New_textfield.dart';
 import '../../../Resources/fontstyle.dart';
-import '../../../Utils/Widgets/drawertile.dart';
 import '../Account/account.dart';
 import '../Categories List/categories_list.dart';
 import '../ItemInfo/iteminfo.dart';
@@ -34,77 +32,77 @@ class Home extends StatelessWidget {
     return Obx(() => MediaQuery(
         data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         child: SizedBox(
-          height: 70,
+          height: MediaQuery.sizeOf(context).height * 0.109,
           child: BottomNavigationBar(
             elevation: 20,
             showUnselectedLabels: true,
             showSelectedLabels: true,
             onTap: landingPageController.changeTabIndex,
             currentIndex: landingPageController.tabIndex.value,
-            backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+            backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
             unselectedItemColor: Colors.black.withOpacity(0.5),
             selectedItemColor: colorPrimary,
             unselectedLabelStyle: TextStyle(
                 color: Colors.white.withOpacity(0.5),
                 fontWeight: FontWeight.w500,
                 fontSize: 12),
-            selectedLabelStyle: TextStyle(
+            selectedLabelStyle: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w500, fontSize: 12),
             items: [
               BottomNavigationBarItem(
                 icon: Container(
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                     child: Image.asset("lib/Assets/Images/notifylogo.png",
                         height: 34,
                         color: landingPageController.tabIndex.value == 0
                             ? colorPrimary
                             : Colors.black.withOpacity(0.5))),
                 label: 'Home',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                     child: Image.asset("lib/Assets/Images/categories.png",
                         height: 34,
                         color: landingPageController.tabIndex.value == 1
                             ? colorPrimary
                             : Colors.black.withOpacity(0.5))),
                 label: 'Categories',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                     child: Image.asset("lib/Assets/Images/wishlist.png",
                         height: 34,
                         color: landingPageController.tabIndex.value == 2
                             ? colorPrimary
                             : Colors.black.withOpacity(0.5))),
                 label: 'Wishlist',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                     child: Image.asset("lib/Assets/Images/shoppingCart.png",
                         height: 34,
                         color: landingPageController.tabIndex.value == 3
                             ? colorPrimary
                             : Colors.black.withOpacity(0.5))),
                 label: 'Cart',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
               BottomNavigationBarItem(
                 icon: Container(
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                     child: Image.asset("lib/Assets/Images/Account2.png",
                         height: 34,
                         color: landingPageController.tabIndex.value == 4
                             ? colorPrimary
                             : Colors.black.withOpacity(0.5))),
                 label: 'Account',
-                backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
               ),
             ],
           ),
@@ -141,7 +139,13 @@ class Home extends StatelessWidget {
   //       false;
   // }
 
-  AppBarWidget(BuildContext context) {
+  AppBarWidget(BuildContext context, int currentIndex) {
+    if (currentIndex != 0) {
+      return PreferredSize(
+        preferredSize: const Size.fromHeight(0),
+        child: AppBar(),
+      );
+    }
     return AppBar(
       bottom: preferredSizedWidget(),
       leadingWidth: 150,
@@ -208,7 +212,7 @@ class Home extends StatelessWidget {
               // width: 40,
             ),
             const SizedBox(width: 8),
-            AutoSizeText( 
+            AutoSizeText(
               'Abbigere',
               style: AppFontStyle.flexibleFontStyle(
                   fontWeight: FontWeight.w500,
@@ -626,28 +630,32 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomePageController homePageController =
         Get.put(HomePageController(), permanent: true);
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBarWidget(context),
-      bottomNavigationBar:
-          buildBottomNavigationMenu(context, homePageController),
-      body: StreamBuilder<ConnectivityResult>(
-          stream: connectivity.onConnectivityChanged,
-          builder: (_, snapshot) {
-            return InternetConnectionWidget(
-              snapshot: snapshot,
-              widget: Obx(() => IndexedStack(
-                    index: homePageController.tabIndex.value,
-                    children: [
-                      homwLandingScreen(context),
-                      CategoriesList(),
-                      CategoriesList(),
-                      CategoriesList(),
-                      Account()
-                    ],
-                  )),
-            );
-          }),
+    return Obx(
+      () => Scaffold(
+        key: _scaffoldKey,
+        appBar: homePageController.tabIndex.value == 0
+            ? AppBarWidget(context, homePageController.tabIndex.value)
+            : null,
+        bottomNavigationBar:
+            buildBottomNavigationMenu(context, homePageController),
+        body: StreamBuilder<ConnectivityResult>(
+            stream: connectivity.onConnectivityChanged,
+            builder: (_, snapshot) {
+              return InternetConnectionWidget(
+                snapshot: snapshot,
+                widget: IndexedStack(
+                  index: homePageController.tabIndex.value,
+                  children: [
+                    homwLandingScreen(context),
+                    const CategoriesList(),
+                    const CategoriesList(),
+                    const CategoriesList(),
+                    const Account()
+                  ],
+                ),
+              );
+            }),
+      ),
     );
   }
 }

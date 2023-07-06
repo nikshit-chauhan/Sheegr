@@ -107,7 +107,10 @@ class Account extends StatelessWidget {
             Expanded(
                 child: Column(
               children: [
-                const Spacer(),
+                // const Spacer(),
+                const SizedBox(
+                  height: 5,
+                ),
                 DrawerTiles(
                     icon: Icons.trolley,
                     tileTitle: 'Orders',
@@ -170,14 +173,14 @@ class Account extends StatelessWidget {
                       Get.to(() => const PrivacyPolicy());
                     }),
 
-                const Spacer(
-                  flex: 20,
-                ),
+                // const Spacer(
+                //   flex: 20,
+                // ),
                 DrawerTiles(
                     icon: Icons.logout_sharp,
                     tileTitle: 'logout',
                     onTap: () {}),
-                const Spacer()
+                // const Spacer()
               ],
             ))
           ],

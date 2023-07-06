@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/services.dart';
 
 import '../../../Resources/strings.dart';
+import '../Home/home.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatelessWidget {
@@ -36,6 +37,27 @@ class ProfileScreen extends StatelessWidget {
             child: SafeArea(
               child: Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new,
+                          color: colorPrimary,
+                        ),
+                        onPressed: () => Get.back(),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.mode_edit_outline,
+                          color: Colors.black,
+                        ),
+                        onPressed: () => Get.off(Home(),
+                            transition: Transition.cupertino,
+                            duration: const Duration(milliseconds: 600)),
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: Column(
@@ -112,7 +134,7 @@ class ProfileScreen extends StatelessWidget {
                                     ),
                                     const Text(
                                       //TODO: update this to change with the input number in login page
-                                      '9358863623',
+                                      '12347890434',
                                       style: TextStyle(fontSize: 15),
                                     ),
                                   ],
