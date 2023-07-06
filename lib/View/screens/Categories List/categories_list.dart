@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:get/get.dart';
-import 'package:sheegr/View/screens/Home/home.dart';
 
-import '../../../Resources/Colors.dart';
+import '../../../Resources/colors.dart';
 import '../ParticularCategoryList/particular_category_list.dart';
 
 class CategoriesList extends StatelessWidget {
@@ -23,9 +22,7 @@ class CategoriesList extends StatelessWidget {
               Icons.arrow_back_ios_new,
               color: Colors.black,
             ),
-            onPressed: () => Get.offAll(Home(),
-                transition: Transition.cupertino,
-                duration: const Duration(milliseconds: 600)),
+            onPressed: () => Get.back(),
           ),
           backgroundColor: colorPrimary,
           leadingWidth: 40,

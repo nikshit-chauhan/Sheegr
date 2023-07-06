@@ -5,9 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sheegr/Controller/quantity_controller.dart';
 
-import '../../../Resources/Colors.dart';
+import '../../../Resources/colors.dart';
 import '../../../Resources/fontstyle.dart';
-import '../Home/home.dart';
 
 class ItemInfo extends StatelessWidget {
   final String imagePath;
@@ -28,9 +27,7 @@ class ItemInfo extends StatelessWidget {
             Icons.arrow_back_ios_new,
             color: Colors.black,
           ),
-          onPressed: () => Get.offAll(Home(),
-              transition: Transition.cupertino,
-              duration: const Duration(milliseconds: 600)),
+          onPressed: () => Get.back(),
         ),
         backgroundColor: colorPrimary,
         leadingWidth: 40,

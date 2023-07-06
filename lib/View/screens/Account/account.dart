@@ -1,9 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sheegr/View/screens/Home/home.dart';
 
-import '../../../Resources/Colors.dart';
+import '../../../Resources/colors.dart';
 import '../../../Resources/fontstyle.dart';
 import '../../../Utils/Widgets/drawertile.dart';
 import '../AboutUs/about_us.dart';
@@ -30,9 +29,7 @@ class Account extends StatelessWidget {
               Icons.arrow_back_ios_new,
               color: Color.fromARGB(255, 255, 255, 255),
             ),
-            onPressed: () => Get.offAll(Home(),
-                transition: Transition.cupertino,
-                duration: const Duration(milliseconds: 600)),
+            onPressed: () => Get.back(),
           ),
           backgroundColor: colorPrimary,
           leadingWidth: 40,

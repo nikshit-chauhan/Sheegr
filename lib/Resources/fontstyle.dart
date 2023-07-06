@@ -1,9 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:sheegr/Resources/Colors.dart';
+import 'package:sheegr/Resources/colors.dart';
 import 'package:sheegr/Resources/textsize_constants.dart';
-
 
 // This class will have all the fontStyle constant which are using in the App.
 class AppFontStyle {

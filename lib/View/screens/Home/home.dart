@@ -7,13 +7,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sheegr/Resources/Colors.dart';
+import 'package:sheegr/Resources/colors.dart';
 import 'package:sheegr/Utils/Widgets/indernet_connection_widget.dart';
 // import 'package:dots_indicator/dots_indicator.dart';
 // import 'package:getwidget/getwidget.dart';
 
 import '../../../Controller/home_page_controller.dart';
-import '../../../Resources/New_textfield.dart';
+import '../../../Resources/new_textfield.dart';
 import '../../../Resources/fontstyle.dart';
 import '../Account/account.dart';
 import '../Categories List/categories_list.dart';

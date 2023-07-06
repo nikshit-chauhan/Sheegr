@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, file_names
+// ignore_for_file: must_be_immutable, file_names, duplicate_ignore
 
 import 'package:flutter/material.dart';
 import '../Resources/fontstyle.dart';

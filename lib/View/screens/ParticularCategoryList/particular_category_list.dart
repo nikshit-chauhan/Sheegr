@@ -3,7 +3,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sheegr/View/screens/Categories%20List/categories_list.dart';
 
 import '../../../Controller/quantity_controller.dart';
 import '../../../Resources/fontstyle.dart';
@@ -59,9 +58,7 @@ class ParticularCategoryList extends StatelessWidget {
                 Icons.arrow_back_ios_new,
                 color: Colors.black,
               ),
-              onPressed: () => Get.offAll(const CategoriesList(),
-                  transition: Transition.cupertino,
-                  duration: const Duration(milliseconds: 600)),
+              onPressed: () => Get.back(),
             ),
             flexibleSpace: FlexibleSpaceBar(
               title: const AutoSizeText(

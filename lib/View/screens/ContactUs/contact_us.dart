@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../Resources/Colors.dart';
+import '../../../Resources/colors.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({super.key});

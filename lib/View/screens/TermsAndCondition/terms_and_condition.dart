@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../Resources/Colors.dart';
+import '../../../Resources/colors.dart';
 
 class TermsAndConditon extends StatelessWidget {
   const TermsAndConditon({super.key});
