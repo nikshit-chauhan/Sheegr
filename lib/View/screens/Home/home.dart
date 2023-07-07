@@ -245,11 +245,11 @@ class Home extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 70,
+              height: 75,
               child: Card(
                 child: Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Image.asset("lib/Assets/Images/bell.png",height: 20,),
+                  padding: const EdgeInsets.all(15.0),
+                  child: Image.asset("lib/Assets/Images/bell.png"),
                 )),
             )
           ],

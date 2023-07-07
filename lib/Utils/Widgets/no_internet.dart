@@ -2,7 +2,7 @@ import 'package:app_settings/app_settings.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-import 'fluid_button.dart';
+import 'CommonWidgets/fluid_button.dart';
 
 class NoInternet extends StatelessWidget {
   const NoInternet({super.key});
