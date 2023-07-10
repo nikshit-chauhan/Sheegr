@@ -152,42 +152,40 @@ class ProfileScreen extends StatelessWidget {
                         const SizedBox(
                           height: 20,
                         ),
-                        Obx(() {
-                          return TextFormField(
-                            controller: emailController,
-                            //TODO: add validator and onChanged
-                            textCapitalization: TextCapitalization.none,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              labelText: 'Email',
-                              // errorText: controller.showError.value
-                              // ? 'Invalid Email'
-                              // : null,
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.grey.shade300,
-                                ),
+                        TextFormField(
+                          controller: emailController,
+                          //TODO: add validator and onChanged
+                          textCapitalization: TextCapitalization.none,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            // errorText: controller.showError.value
+                            // ? 'Invalid Email'
+                            // : null,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey.shade300,
                               ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.grey.shade300,
-                              )),
-                              focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.grey.shade300,
-                              )),
-                              errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: Colors.grey.shade300,
-                              )),
-                              hintText: 'Email(Optional)',
                             ),
-                            onChanged: (value) {
-                              controller.email.value = value;
-                              controller.validateEmail(value);
-                            },
-                          );
-                        }),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: Colors.grey.shade300,
+                            )),
+                            hintText: 'Email(Optional)',
+                          ),
+                          onChanged: (value) {
+                            controller.email.value = value;
+                            controller.validateEmail(value);
+                          },
+                        ),
                         const SizedBox(
                           height: 20,
                         ),
@@ -202,8 +200,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         Obx(() {
                           return DropdownButton<String>(
-                            // value: selectedCategory.value,
-                            value: "",
+                            value: selectedCategory.value,
                             items: categories.map((category) {
                               return DropdownMenuItem(
                                 value: category,
