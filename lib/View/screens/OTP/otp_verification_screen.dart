@@ -1,17 +1,26 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:sheegr/Controller/otp_controller.dart';
 import 'package:sheegr/Resources/colors.dart';
+import 'package:sheegr/View/screens/Home/home.dart';
+import 'package:sheegr/View/screens/Login/login_screen.dart';
 // import 'package:sheegr/View/screens/main_screen.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../Resources/strings.dart';
-import '../Home/home.dart';
 
+// ignore: must_be_immutable
 class OtpVerificationScreen extends StatelessWidget {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  OtpController otpController = OtpController();
   final String? mobileNumber;
-  const OtpVerificationScreen({super.key, required this.mobileNumber});
+  OtpVerificationScreen({super.key, required this.mobileNumber});
+  String code = "";
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +128,7 @@ class OtpVerificationScreen extends StatelessWidget {
                             ],
                             enableActiveFill: false,
                             onChanged: (value) {
+                              code = value;
                               // print(value);
                             }),
                       ),
@@ -129,8 +139,21 @@ class OtpVerificationScreen extends StatelessWidget {
                         height: size.height * .06,
                         width: size.width * .9,
                         child: ElevatedButton(
-                          onPressed: () {
-                            Get.offAll(Home());
+                          onPressed: () async {
+                            log("OTP button pressed");
+                            try {
+                              PhoneAuthCredential credential =
+                                  PhoneAuthProvider.credential(
+                                      verificationId:
+                                          LoginScreen.verificationId,
+                                      smsCode: code);
+
+                              // Sign the user in (or link) with the credential
+                              await auth.signInWithCredential(credential);
+                              Get.offAll(Home());
+                            } catch (e) {
+                              log("$e");
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: colorPrimary,

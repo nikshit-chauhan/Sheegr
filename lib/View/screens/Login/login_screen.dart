@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -10,12 +13,15 @@ import '../../../Resources/strings.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  static String verificationId = "";
   MobileController phoneNumberController = Get.put(MobileController());
 
   LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    const String countryCode = '+91';
     return Sizer(
       builder: (context, orientation, deviceType) => Scaffold(
         appBar: AppBar(
@@ -24,7 +30,7 @@ class LoginScreen extends StatelessWidget {
             icon: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.black,
-            ),  
+            ),
             onPressed: () => Get.off(
               const MainScreen(),
             ),
@@ -60,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                         const Text(
                           Strings.login,
                           style: TextStyle(
-                            fontSize: 30, 
+                            fontSize: 30,
                             fontFamily: "Quicksand-Bold",
                           ),
                         ),
@@ -75,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(
-                           height: 45,
+                          height: 45,
                         ),
                         Column(
                           children: [
@@ -120,7 +126,7 @@ class LoginScreen extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         const Text(
-                                          '+91',
+                                          countryCode,
                                           style: TextStyle(fontSize: 15),
                                         ),
                                         Container(
@@ -143,19 +149,48 @@ class LoginScreen extends StatelessWidget {
                           height: 45,
                         ),
                         Obx(() {
-                          final isValidNumber =
-                              phoneNumberController.mobileNumber.toString().length == 10;
+                          final isValidNumber = phoneNumberController
+                                  .mobileNumber
+                                  .toString()
+                                  .length ==
+                              10;
                           return SizedBox(
                             width: double.infinity,
                             height: 50.0,
                             child: ElevatedButton(
                               onPressed: isValidNumber
-                                  ? () {
+                                  ? () async {
                                       String mobileNum = phoneNumberController
                                           .mobileNumber.value;
-                                      Get.to(OtpVerificationScreen(
-                                        mobileNumber: mobileNum,
-                                      ));
+                                      await auth.verifyPhoneNumber(
+                                        phoneNumber: countryCode + mobileNum,
+                                        verificationCompleted:
+                                            (PhoneAuthCredential
+                                                credential) async {
+                                          await FirebaseAuth.instance
+                                              .signInWithCredential(credential)
+                                              .then((value) async {
+                                            log("signinWithCredentials : $value");
+                                          });
+                                        },
+                                        verificationFailed:
+                                            (FirebaseAuthException e) {
+                                          if (e.code ==
+                                              'invalid-phone-number') {
+                                            print(
+                                                'The provided phone number is not valid.');
+                                          }
+                                        },
+                                        codeSent: (String verificationId,
+                                            int? resendToken) {
+                                          verificationId = verificationId;
+                                          Get.to(OtpVerificationScreen(
+                                            mobileNumber: mobileNum,
+                                          ));
+                                        },
+                                        codeAutoRetrievalTimeout:
+                                            (String verificationId) {},
+                                      );
                                     }
                                   : null,
                               style: ElevatedButton.styleFrom(
