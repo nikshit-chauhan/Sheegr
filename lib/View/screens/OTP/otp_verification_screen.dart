@@ -141,6 +141,7 @@ class OtpVerificationScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () async {
                             log("OTP button pressed");
+                            //TODO: check why this is not working?????
                             try {
                               PhoneAuthCredential credential =
                                   PhoneAuthProvider.credential(
@@ -150,10 +151,11 @@ class OtpVerificationScreen extends StatelessWidget {
 
                               // Sign the user in (or link) with the credential
                               await auth.signInWithCredential(credential);
-                              Get.offAll(Home());
                             } catch (e) {
                               log("$e");
                             }
+                            //TODO: below route is out of scope rn fix this before submitting
+                            Get.offAll(Home());
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: colorPrimary,
