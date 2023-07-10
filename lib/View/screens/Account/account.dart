@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../Resources/colors.dart';
 import '../../../Resources/fontstyle.dart';
-import '../../../Utils/Widgets/drawertile.dart';
+import '../../../Utils/Widgets/CommonWidgets/drawertile.dart';
 import '../AboutUs/about_us.dart';
 import '../ContactUs/contact_us.dart';
 import '../FAQ/faq.dart';

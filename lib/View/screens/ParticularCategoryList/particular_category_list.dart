@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Controller/quantity_controller.dart';
+import '../../../Resources/Colors.dart';
 import '../../../Resources/fontstyle.dart';
-import '../ItemInfo/iteminfo.dart';
 
 class ParticularCategoryList extends StatelessWidget {
   ParticularCategoryList({super.key});
@@ -14,196 +14,124 @@ class ParticularCategoryList extends StatelessWidget {
   //  int quantity = 0;
   bool _isShow = false;
 
-  Widget addToCardWidget() {
-    return Visibility(
-      visible: _isShow,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.remove),
-            onPressed: quantity.decrementQuantity,
-            color: const Color(0xffE40045),
-          ),
-          Text(
-            quantity.toString(),
-            style: const TextStyle(
-                color: Color(0xffE40045),
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
-          ),
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: quantity.increaseQuantity,
-            color: const Color(0xffE40045),
-          ),
-        ],
-      ),
-    );
-  }
+  //!  add to cart yet to develop ..Excluded as of now
+  // Widget addToCardWidget() {
+  //   return Visibility(
+  //     visible: _isShow,
+  //     child: Row(
+  //       mainAxisSize: MainAxisSize.min,
+  //       children: [
+  //         IconButton(
+  //           icon: const Icon(Icons.remove),
+  //           onPressed: quantity.decrementQuantity,
+  //           color: const Color(0xffE40045),
+  //         ),
+  //         Text(
+  //           quantity.toString(),
+  //           style: const TextStyle(
+  //               color: Color(0xffE40045),
+  //               fontSize: 20,
+  //               fontWeight: FontWeight.bold),
+  //         ),
+  //         IconButton(
+  //           icon: const Icon(Icons.add),
+  //           onPressed: quantity.increaseQuantity,
+  //           color: const Color(0xffE40045),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: true,
-            snap: false,
-            floating: false,
-            expandedHeight: 160,
-            backgroundColor: const Color(0xffE40045).withOpacity(1),
-            leading: IconButton(
+        appBar: AppBar(
+          elevation: 0,
+          title: const Text(
+            "Category Name",
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          ),
+          leading: IconButton(
               icon: const Icon(
                 Icons.arrow_back_ios_new,
-                color: Colors.black,
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
-              onPressed: () => Get.back(),
-            ),
-            flexibleSpace: FlexibleSpaceBar(
-              title: const AutoSizeText(
-                'Category Name',
-                style: TextStyle(color: Colors.black),
-                textAlign: TextAlign.left,
-              ),
-              background: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                      const Color.fromARGB(255, 255, 243, 243).withOpacity(0.5),
-                      BlendMode.srcOver),
-                  child: Hero(
-                    tag: 'new1',
-                    child: Image.asset(
-                      "lib/Assets/Images/friedfish.png",
-                      fit: BoxFit.fill,
-                    ),
-                  )),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-                child: AutoSizeText(
-                  'Some description about the category...!',
-                  style: AppFontStyle.cotentTextStyle(),
-                ),
-              ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 20,
-              (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.to(
-                        () => ItemInfo(
-                          imagePath: "assets/icons/friedfish.png",
-                        ),
-                        transition: Transition.cupertino,
-                        duration: const Duration(milliseconds: 600),
-                      );
-                    },
-                    child: Card(
-                      shadowColor: const Color(0xffE40045).withOpacity(0.8),
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          side: const BorderSide(color: Colors.transparent),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Container(
-                        color: Colors.transparent,
-                        height: MediaQuery.of(context).size.height * 0.15,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            ListTile(
-                              leading: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "lib/Assets/Images/friedfish.png",
-                                  )),
-                              title: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.7,
-                                    child: const AutoSizeText(
-                                      "fsdfsd /sdfsdf 4443324/ weifuei / fwehf efwrfrw",
-                                      maxLines: 2,
-                                      maxFontSize: 17,
-                                      minFontSize: 14,
-                                      overflow: TextOverflow.ellipsis,
+              onPressed: () {
+                Get.back();
+              }),
+          backgroundColor: colorPrimary,
+          leadingWidth: 40,
+        ),
+        body: GridView.count(
+            crossAxisCount: 2,
+            shrinkWrap: false,
+            // physics: const NeverScrollableScrollPhysics(),
+            children: List.generate(7, (index) {
+              return Padding(
+                padding: const EdgeInsets.all(5.0), 
+                child: Card(
+                  color: Colors.transparent,
+                    elevation: 0,
+                    child: Column(
+                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset("lib/Assets/Images/fish1.png"),
+                          // SizedBox(
+                          //   height: MediaQuery.of(context).size.height * 0.02,
+                          // ),
+                          // Text("Yellow Fin Tuna",style: AppFontStyle.flexibleFontStyle(fontSize:20 ),),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom:2), 
+                            child: AutoSizeText(
+                              "Yellow Fin Tuna",
+                              minFontSize: 10,
+                              maxFontSize: 20,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppFontStyle.flexibleFontStyle(fontSize: 20),
+                            ),
+                          ),
+                          // SizedBox(
+                          //   height: MediaQuery.of(context).size.height * 0.02,
+                          // ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                            children: [
+                              AutoSizeText(
+                                "₹ 223",
+                                minFontSize: 10,
+                                maxFontSize: 17,
+                                style: AppFontStyle.flexibleFontStyle(
+                                    fontSize: 17),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.04,
+                                decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 255, 255, 255)
+                                        .withOpacity(0.5),
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: Colors.black.withOpacity(0.2))),
+                                child: const Center(
+                                  child: AutoSizeText(
+                                    'select',
+                                    minFontSize: 10,
+                                    maxFontSize: 17,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      color: colorPrimary,
                                     ),
                                   ),
-                                  const AutoSizeText(
-                                    "₹323",
-                                    maxFontSize: 16,
-                                    minFontSize: 10,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 0, 0, 0)
-                                    .withOpacity(0.04),
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(15),
-                                  bottomRight: Radius.circular(15),
                                 ),
-                              ),
-                              child: ListTile(
-                                  title: const AutoSizeText("Add to cart",
-                                      style: TextStyle(color: Colors.black)),
-                                  trailing: GestureDetector(
-                                    onTap: () {
-                                      // setState(
-                                      //   () {
-                                      // _isShow = true;
-                                      //     quantity++;
-                                      //   },
-                                      // );
-                                    },
-                                    child: _isShow
-                                        ? addToCardWidget()
-                                        : Card(
-                                            color: const Color(0xffE40045),
-                                            shape: RoundedRectangleBorder(
-                                                side: const BorderSide(
-                                                    color: Colors.transparent),
-                                                borderRadius:
-                                                    BorderRadius.circular(0)),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(4),
-                                              child: AutoSizeText(
-                                                "Add",
-                                                // maxFontSize: 12,
-                                                // minFontSize: 7,
-                                                style: AppFontStyle
-                                                    .flexibleFontStyle(
-                                                        fontColor: const Color
-                                                                .fromARGB(255,
-                                                            255, 255, 255)),
-                                              ),
-                                            ),
-                                          ),
-                                  )),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
+                              )
+                            ],
+                          ),
+                          
+                        ])),
+              );
+            })));
   }
 }

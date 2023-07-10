@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:get/get.dart';
 
 import '../../../Resources/colors.dart';
+import '../Home/home.dart';
 import '../ParticularCategoryList/particular_category_list.dart';
 
 class CategoriesList extends StatelessWidget {
@@ -15,81 +16,103 @@ class CategoriesList extends StatelessWidget {
           elevation: 0,
           title: const Text(
             "Categories",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
           ),
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios_new,
-              color: Colors.black,
+              color: Color.fromARGB(255, 255, 255, 255), 
             ),
-            onPressed: () => Get.back(),
+            onPressed: () => Get.to(() => Home()),
           ),
           backgroundColor: colorPrimary,
           leadingWidth: 40,
         ),
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(17.0),
           child: ListView.builder(
-            itemCount: 1,
+            itemCount: 5,
             itemBuilder: (context, index) {
-              return GridView.count(
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: List.generate(2, (subIndex) {
-                  int itemIndex = index * 2 + subIndex;
-                  if (itemIndex < 1) {
-                    return GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => ParticularCategoryList(),
-                            transition: Transition.cupertino,
-                            duration: const Duration(milliseconds: 600),
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            semanticContainer: true,
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                color: Colors.transparent,
-                              ),
-                              borderRadius: BorderRadius.circular(15.0),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+              return SizedBox(
+                height: 200,
+                child: GestureDetector(
+                  onTap: (){
+                    Get.to(() => ParticularCategoryList());
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    elevation: 7,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Expanded(
+                          child: CircleAvatar(
+                            radius: 55,
+                            foregroundImage:
+                                AssetImage("lib/Assets/Images/friedfish.png"),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: ListTile(
+                            // leading: const CircleAvatar(
+                            //   radius: 35,
+                            //   foregroundImage:
+                            //       AssetImage("lib/Assets/Images/friedfish.png"),
+                            // ),
+                            title: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Hero(
-                                    tag: 'new1',
-                                    child: Image.asset(
-                                        "lib/Assets/Images/friedfish.png")),
+                                const AutoSizeText(
+                                  "Fresh Water Fish",
+                                  style: TextStyle(
+                                      fontSize: 22, fontWeight: FontWeight.w600),
+                                  maxFontSize: 22,
+                                  minFontSize: 10,
+                
+                                  // textAlign: TextAlign.start,
+                                ),
+                                const AutoSizeText(
+                                  "Fresh Water Fish fdgfdsdfdsrg erg regregerger ergergerg ewrgfergsderg wref",
+                                  style: TextStyle(fontSize: 15),
+                                  maxFontSize: 15,
+                                  minFontSize: 13,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.justify,
+                                ),
                                 Container(
+                                  width: MediaQuery.of(context).size.width * 0.3,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.04,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xffE40045)
-                                        .withOpacity(0.8),
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(15),
-                                      bottomRight: Radius.circular(15),
+                                    color: colorPrimary,
+                                    borderRadius: BorderRadius.circular(10),
+                                    // border: Border.all(
+                                    //     color: Colors.black.withOpacity(0.2))
+                                  ),
+                                  child: const Center(
+                                    child: AutoSizeText(
+                                      'Shop Now',
+                                      minFontSize: 10,
+                                      maxFontSize: 17,
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
-                                  child: const ListTile(
-                                    titleAlignment:
-                                        ListTileTitleAlignment.center,
-                                    title: AutoSizeText("Fried Fish",
-                                        style: TextStyle(color: Colors.white)),
-                                  ),
-                                ),
+                                )
                               ],
                             ),
                           ),
-                        ));
-                  } else {
-                    return const Text("");
-                  }
-                }),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               );
             },
           ),

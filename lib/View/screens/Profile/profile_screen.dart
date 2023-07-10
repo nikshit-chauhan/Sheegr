@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sheegr/Controller/email_controller.dart';
 import 'package:sheegr/Resources/colors.dart';
-import 'package:sheegr/Utils/Widgets/custom_text_filed.dart';
+// import 'package:sheegr/Utils/Widgets/custom_text_filed.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/services.dart';
 
 import '../../../Resources/strings.dart';
+import '../../../Utils/Widgets/CommonWidgets/custom_text_filed.dart';
 import '../Home/home.dart';
 
 // ignore: must_be_immutable
