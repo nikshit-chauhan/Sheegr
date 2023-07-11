@@ -6,8 +6,8 @@ import '../../../Resources/colors.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
-  final String sheegr_title = "Sheegr Seafoods and Logistics Pvt Ltd";
-  final String sheegr_about =
+  final String sheegrTitle = "Sheegr Seafoods and Logistics Pvt Ltd";
+  final String sheegrAbout =
       "Sheegr is a 600 crore air cargo logistic project that will collect seafood from the nearest harbor and ensure speedy delivery of seafood for every person to enjoy the fresh taste.";
 
   @override
@@ -38,7 +38,7 @@ class AboutUs extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              sheegr_title,
+              sheegrTitle,
               style: const TextStyle(
                   color: colorPrimary,
                   fontFamily: "Quicksand-Bold",
@@ -49,7 +49,7 @@ class AboutUs extends StatelessWidget {
               height: 10,
             ),
             Text(
-              sheegr_about,
+              sheegrAbout,
               style: const TextStyle(
                 fontFamily: "Quicksand-Regular",
                 fontSize: 16,

@@ -44,12 +44,13 @@ class ContactUs extends StatelessWidget {
                   Strings.forfeedback,
                   style: TextStyle(
                       color: colorPrimary,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontFamily: "Quicksand-Regular",
-                      fontSize: 20),
+                      fontSize: 16),
                 ),
                 const SizedBox(height: 15),
                 InkWell(
+                  //TODO:Implement onTap here
                   onTap: () {},
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -78,6 +79,7 @@ class ContactUs extends StatelessWidget {
                   height: 10,
                 ),
                 InkWell(
+                  //TODO:Implement onTap here
                   onTap: () {},
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -118,9 +120,9 @@ class ContactUs extends StatelessWidget {
                   Strings.companyoffice,
                   style: TextStyle(
                       color: colorPrimary,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontFamily: "Quicksand-Regular",
-                      fontSize: 17),
+                      fontSize: 16),
                 ),
                 const SizedBox(height: 15),
                 Row(
