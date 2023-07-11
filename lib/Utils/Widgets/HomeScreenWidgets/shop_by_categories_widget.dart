@@ -17,11 +17,11 @@ class ShopByCategoriesWidget extends StatelessWidget {
             padding: const EdgeInsets.all(2.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children:  [
+              children: const [
                 CircleAvatar(
                   radius: 33,
                   // minRadius: 20,
-                  // maxRadius: 33, 
+                  // maxRadius: 33,
                   // backgroundColor: Colors.transparent,
                   // foregroundColor: Colors.transparent,
                   // backgroundImage:

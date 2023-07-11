@@ -139,7 +139,7 @@ class Account extends StatelessWidget {
                       icon: Icons.question_answer_outlined,
                       tileTitle: 'FAQ',
                       onTap: () {
-                        Get.to(() => const FAQ());
+                        Get.to(() => FAQ());
                       }),
                   DrawerTiles(
                       icon: Icons.notes,

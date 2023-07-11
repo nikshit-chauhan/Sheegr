@@ -13,12 +13,16 @@ class PrivacyPolicy extends StatelessWidget {
           elevation: 0,
           title: const Text(
             "Privacy Policy",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: "Quicksand-SemiBold",
+                fontSize: 18),
           ),
+          centerTitle: false,
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios_new,
-              color: Colors.black,
+              color: Colors.white,
             ),
             onPressed: () => Get.back(),
           ),

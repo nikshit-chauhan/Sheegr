@@ -13,17 +13,21 @@ class TermsAndConditon extends StatelessWidget {
           elevation: 0,
           title: const Text(
             "Terms And Condition",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(
+                color: Colors.white,
+                fontFamily: "Quicksand-SemiBold",
+                fontSize: 18),
           ),
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios_new,
-              color: Colors.black,
+              color: Colors.white,
             ),
             onPressed: () => Get.back(),
           ),
           backgroundColor: colorPrimary,
           leadingWidth: 40,
+          centerTitle: false,
         ),
         body: const Column(
           children: [

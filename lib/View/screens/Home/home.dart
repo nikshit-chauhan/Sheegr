@@ -19,7 +19,6 @@ import '../../../Utils/Widgets/HomeScreenWidgets/shop_by_categories_widget.dart'
 import '../../../Utils/Widgets/HomeScreenWidgets/trending_products_widget.dart';
 import '../Account/account.dart';
 import '../Categories List/categories_list.dart';
-import '../ItemInfo/iteminfo.dart';
 
 class Home extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -138,6 +137,7 @@ class Home extends StatelessWidget {
   //       false;
   // }
 
+  // ignore: non_constant_identifier_names
   AppBarWidget(BuildContext context, int currentIndex) {
     if (currentIndex != 0) {
       return PreferredSize(
@@ -177,7 +177,7 @@ class Home extends StatelessWidget {
               )
             ],
           )),
-     
+
       actions: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -247,10 +247,10 @@ class Home extends StatelessWidget {
             SizedBox(
               height: 75,
               child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Image.asset("lib/Assets/Images/bell.png"),
-                )),
+                  child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Image.asset("lib/Assets/Images/bell.png"),
+              )),
             )
           ],
         ),
@@ -368,7 +368,7 @@ class Home extends StatelessWidget {
           height: MediaQuery.of(context).size.height * 0.01,
         ),
 
-        NewArrivalsWidget(),
+        const NewArrivalsWidget(),
 
         Padding(
           padding: const EdgeInsets.all(10.0),
