@@ -8,6 +8,7 @@ import '../../../Utils/Widgets/CommonWidgets/drawertile.dart';
 import '../AboutUs/about_us.dart';
 import '../ContactUs/contact_us.dart';
 import '../FAQ/faq.dart';
+import '../Orders/orders.dart';
 import '../PrivacyPolicy/privacy_policy.dart';
 import '../Profile/profile_screen.dart';
 import '../TermsAndCondition/terms_and_condition.dart';
@@ -34,153 +35,140 @@ class Account extends StatelessWidget {
           backgroundColor: colorPrimary,
           leadingWidth: 40,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                GestureDetector(
-                  onTap: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-
-                      Column(
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.45,
-                            child: AutoSizeText("Restaurant1",
-                                minFontSize: 10,
-                                maxFontSize: 30,
-                                style: AppFontStyle.flexibleFontStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: AppFontStyle.regularFont),
-                                // style: const TextStyle(
-                                //     fontSize: 15, fontWeight: FontWeight.w700),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 2),
-                          ),
-                          Row(
-                            children: [
-                              AutoSizeText("+91-6265640048",
-                                  minFontSize: 8,
-                                  maxFontSize: 16,
-                                  style: AppFontStyle.flexibleFontStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500),
-                                  // style: const TextStyle(
-                                  //     fontSize: 15, fontWeight: FontWeight.w600),
-                                  overflow: TextOverflow.ellipsis),
-                              const Text(
-                                " | ",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400, fontSize: 23),
-                              ),
-                              AutoSizeText("restaurant@gmail.com",
-                                  minFontSize: 8,
-                                  maxFontSize: 16,
-                                  style: AppFontStyle.flexibleFontStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500),
-                                  // style: const TextStyle(
-                                  //     fontSize: 15, fontWeight: FontWeight.w600),
-                                  overflow: TextOverflow.ellipsis),
-                            ],
-                          ),
-                        ],
-                      ),
-                      // const Spacer(flex: 9),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Expanded(
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
                 child: Column(
-              children: [
-                // const Spacer(),
-                const SizedBox(
-                  height: 5,
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      child: AutoSizeText("Restaurant1",
+                          minFontSize: 10,
+                          maxFontSize: 30,
+                          style: AppFontStyle.flexibleFontStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: AppFontStyle.regularFont),
+                          // style: const TextStyle(
+                          //     fontSize: 15, fontWeight: FontWeight.w700),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2),
+                    ),
+                    Row(
+                      children: [
+                        AutoSizeText("+91-6265640048",
+                            minFontSize: 8,
+                            maxFontSize: 16,
+                            style: AppFontStyle.flexibleFontStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
+                            // style: const TextStyle(
+                            //     fontSize: 15, fontWeight: FontWeight.w600),
+                            overflow: TextOverflow.ellipsis),
+                        const Text(
+                          " | ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 23),
+                        ),
+                        AutoSizeText("restaurant@gmail.com",
+                            minFontSize: 8,
+                            maxFontSize: 16,
+                            style: AppFontStyle.flexibleFontStyle(
+                                fontSize: 16, fontWeight: FontWeight.w500),
+                            // style: const TextStyle(
+                            //     fontSize: 15, fontWeight: FontWeight.w600),
+                            overflow: TextOverflow.ellipsis),
+                      ],
+                    ),
+                  ],
                 ),
-                DrawerTiles(
-                    icon: Icons.trolley,
-                    tileTitle: 'Orders',
-                    onTap: () {
-                      //Get.to(() => ProfileScreen());
-                    }),
-                DrawerTiles(
-                    icon: Icons.person,
-                    tileTitle: 'My Profile',
-                    onTap: () {
-                      Get.to(() => ProfileScreen());
-                    }),
-                DrawerTiles(
-                    icon: Icons.abc,
-                    tileTitle: 'Saved Addresses',
-                    onTap: () {
-                      //Get.to(() => ProfileScreen());
-                    }),
-                DrawerTiles(
-                    icon: Icons.abc,
-                    tileTitle: 'Wishlist',
-                    onTap: () {
-                      //Get.to(() => ProfileScreen());
-                    }),
-                DrawerTiles(
-                    icon: Icons.notifications,
-                    tileTitle: 'Notifications',
-                    onTap: () {
-                      //Get.to(() => ProfileScreen());
-                    }),
-                DrawerTiles(
-                    icon: Icons.person_2,
-                    tileTitle: 'About Us',
-                    onTap: () {
-                      Get.to(() => const AboutUs());
-                    }),
-                DrawerTiles(
-                    icon: Icons.call,
-                    tileTitle: 'Contact Us',
-                    onTap: () {
-                      Get.to(() => const ContactUs());
-                    }),
-                DrawerTiles(
-                    icon: Icons.question_answer_outlined,
-                    tileTitle: 'FAQ',
-                    onTap: () {
-                      Get.to(() => const FAQ());
-                    }),
-                DrawerTiles(
-                    icon: Icons.notes,
-                    tileTitle: 'Terms And Conditions',
-                    onTap: () {
-                      Get.to(() => const TermsAndConditon());
-                    }),
-                //const Spacer(),
-                DrawerTiles(
-                    icon: Icons.privacy_tip_outlined,
-                    tileTitle: 'Privacy Policy',
-                    onTap: () {
-                      Get.to(() => const PrivacyPolicy());
-                    }),
+              ),
+              const Divider(),
+              Column(
+                children: [
+                  // const Spacer(),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  DrawerTiles(
+                      image: "lib/Assets/Images/shoppingCart.png",
+                        
+                      tileTitle: 'Orders',
+                      onTap: () {
+                        Get.to(() => Orders());
+                      }),
+                  DrawerTiles(
+                     image: "lib/Assets/Images/Account1.png",
+                      tileTitle: 'My Profile',
+                      onTap: () {
+                        Get.to(() => ProfileScreen());
+                      }),
+                  DrawerTiles(
+                     image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'Saved Addresses',
+                      onTap: () {
+                        //Get.to(() => ProfileScreen());
+                      }),
+                  DrawerTiles(
+                    image: "lib/Assets/Images/wishlist.png",
+                      tileTitle: 'Wishlist',
+                      onTap: () {
+                        //Get.to(() => ProfileScreen());
+                      }),
+                  DrawerTiles(
+                   image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'Notifications',
+                      onTap: () {
+                        //Get.to(() => ProfileScreen());
+                      }),
+                  DrawerTiles(
+                      image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'About Us',
+                      onTap: () {
+                        Get.to(() => const AboutUs());
+                      }),
+                  DrawerTiles(
+                     image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'Contact Us',
+                      onTap: () {
+                        Get.to(() => const ContactUs());
+                      }),
+                  DrawerTiles(
+                     image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'FAQ',
+                      onTap: () {
+                        Get.to(() => const FAQ());
+                      }),
+                  DrawerTiles(
+                    image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'Terms And Conditions',
+                      onTap: () {
+                        Get.to(() => const TermsAndConditon());
+                      }),
+                  //const Spacer(),
+                  DrawerTiles(
+                    image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'Privacy Policy',
+                      onTap: () {
+                        Get.to(() => const PrivacyPolicy());
+                      }),
 
-                // const Spacer(
-                //   flex: 20,
-                // ),
-                DrawerTiles(
-                    icon: Icons.logout_sharp,
-                    tileTitle: 'logout',
-                    onTap: () {}),
-                // const Spacer()
-              ],
-            ))
-          ],
+                  // const Spacer(
+                  //   flex: 20,
+                  // ),
+                  DrawerTiles(
+                      image: "lib/Assets/Images/shoppingCart.png",
+                      tileTitle: 'logout',
+                      onTap: () {}),
+                  // const Spacer()
+                ],
+              )
+            ],
+          ),
         ));
   }
 }

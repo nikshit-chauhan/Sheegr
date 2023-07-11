@@ -6,7 +6,7 @@ class QuantityController extends GetxController {
   var quantity = 0.obs; // Initialize quantity as an observable RxInt with an initial value of 0
   
   void increaseQuantity() {
-    quantity.value++; 
+    quantity++; 
     log(quantity.toString());
     
     // Increase the value of quantity by 1

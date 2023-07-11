@@ -4,7 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sheegr/Utils/Widgets/no_internet.dart';
+import 'package:sheegr/Utils/Widgets/InternetWidgets/no_internet.dart';
 
 class InternetConnectionWidget extends StatelessWidget {
   final AsyncSnapshot<ConnectivityResult> snapshot;
