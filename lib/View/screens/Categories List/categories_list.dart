@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:get/get.dart';
+import 'package:sheegr/View/screens/Home/home.dart';
 
 import '../../../Resources/colors.dart';
-import '../Home/home.dart';
 import '../ParticularCategoryList/particular_category_list.dart';
 
 class CategoriesList extends StatelessWidget {
@@ -21,9 +21,9 @@ class CategoriesList extends StatelessWidget {
           leading: IconButton(
             icon: const Icon(
               Icons.arrow_back_ios_new,
-              color: Color.fromARGB(255, 255, 255, 255), 
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
-            onPressed: () => Get.to(() => Home()),
+            onPressed: () => Get.to(Home()),
           ),
           backgroundColor: colorPrimary,
           leadingWidth: 40,
@@ -36,7 +36,7 @@ class CategoriesList extends StatelessWidget {
               return SizedBox(
                 height: 200,
                 child: GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.to(() => ParticularCategoryList());
                   },
                   child: Card(
@@ -68,10 +68,11 @@ class CategoriesList extends StatelessWidget {
                                 const AutoSizeText(
                                   "Fresh Water Fish",
                                   style: TextStyle(
-                                      fontSize: 22, fontWeight: FontWeight.w600),
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.w600),
                                   maxFontSize: 22,
                                   minFontSize: 10,
-                
+
                                   // textAlign: TextAlign.start,
                                 ),
                                 const AutoSizeText(
@@ -84,7 +85,8 @@ class CategoriesList extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                 ),
                                 Container(
-                                  width: MediaQuery.of(context).size.width * 0.3,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
                                   height:
                                       MediaQuery.of(context).size.height * 0.04,
                                   decoration: BoxDecoration(

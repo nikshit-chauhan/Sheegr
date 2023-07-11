@@ -125,27 +125,31 @@ class ContactUs extends StatelessWidget {
                       fontSize: 16),
                 ),
                 const SizedBox(height: 15),
-                Row(
-                  children: [
-                    const ImageIcon(
-                      AssetImage(
-                        "lib/Assets/Images/location1.png",
+                InkWell(
+                  //TODO:Implement onTap here
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      const ImageIcon(
+                        AssetImage(
+                          "lib/Assets/Images/location1.png",
+                        ),
+                        color: colorPrimary,
                       ),
-                      color: colorPrimary,
-                    ),
-                    const SizedBox(width: 10),
-                    SizedBox(
-                      height: 95,
-                      width: 285,
-                      child: Text(
-                        "21, 1st Cross, Shantha Complex 1st Main, Poojari Layout 3rd Cross Rd, next to NETRA EYE HOSPITAL, RMV 2nd Stage, Ashwath Nagar, Armane Nagar, Bengaluru, Karnataka 560094.",
-                        style: TextStyle(
-                            color: Colors.grey.shade700,
-                            fontFamily: "Quicksand-Regular",
-                            fontSize: 15),
+                      const SizedBox(width: 10),
+                      SizedBox(
+                        height: 95,
+                        width: 285,
+                        child: Text(
+                          "21, 1st Cross, Shantha Complex 1st Main, Poojari Layout 3rd Cross Rd, next to NETRA EYE HOSPITAL, RMV 2nd Stage, Ashwath Nagar, Armane Nagar, Bengaluru, Karnataka 560094.",
+                          style: TextStyle(
+                              color: Colors.grey.shade700,
+                              fontFamily: "Quicksand-Regular",
+                              fontSize: 15),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
