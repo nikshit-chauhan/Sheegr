@@ -8,7 +8,6 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sheegr/Resources/colors.dart';
-import 'package:sheegr/Utils/Widgets/indernet_connection_widget.dart';
 
 import '../../../Controller/home_page_controller.dart';
 import '../../../Resources/new_textfield.dart';
@@ -17,6 +16,7 @@ import '../../../Utils/Widgets/HomeScreenWidgets/carousel_wideget.dart';
 import '../../../Utils/Widgets/HomeScreenWidgets/new_arrivals_widget.dart';
 import '../../../Utils/Widgets/HomeScreenWidgets/shop_by_categories_widget.dart';
 import '../../../Utils/Widgets/HomeScreenWidgets/trending_products_widget.dart';
+import '../../../Utils/Widgets/InternetWidgets/indernet_connection_widget.dart';
 import '../Account/account.dart';
 import '../Categories List/categories_list.dart';
 
@@ -248,7 +248,7 @@ class Home extends StatelessWidget {
               height: 75,
               child: Card(
                   child: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(17.0),
                 child: Image.asset("lib/Assets/Images/bell.png"),
               )),
             )

@@ -8,10 +8,10 @@ import '../../../Resources/fontstyle.dart';
 class DrawerTiles extends StatelessWidget {
     DrawerTiles(
       {super.key,
-      required this.icon,
+      required this.image,
       required this.tileTitle,
       required this.onTap});
-  IconData icon;
+  String image;
   String tileTitle;
   Function() onTap;     
   @override
@@ -19,9 +19,9 @@ class DrawerTiles extends StatelessWidget {
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: Colors.transparent, 
-        child: Icon(
-          icon,
-          size: 27,
+        child: Image.asset(
+          image,
+          height: 25,
           color: const Color.fromARGB(255, 0, 0, 0), 
         ),
       ),
