@@ -46,6 +46,7 @@ dependencies:
   app_settings: ^4.2.0
   firebase_core: ^2.14.0
   firebase_auth: ^4.6.3
+  dotted_line: ^3.2.2
 
 dev_dependencies:
   flutter_test:
