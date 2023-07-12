@@ -10,7 +10,8 @@ class FAQ extends StatelessWidget {
   final List<Map> faqList = [
     {
       'question': 'Question 1',
-      'answer': 'This is the answer to question 1.',
+      'answer':
+          'This is the answer to question 1.This is the answer to question 1.This is the answer to question 1.This is the answer to question 1.This is the answer to question 1.This is the answer to question 1.This is the answer to question 1.This is the answer to question 1.This is the answer to question 1.',
     },
     {
       'question': 'Question 2',
@@ -95,15 +96,22 @@ class FAQ extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 15),
-                          child: Text(
-                            faqList[i]['answer'],
-                            textAlign: TextAlign.start,
-                            style: const TextStyle(
-                                color: grey,
-                                fontFamily: "Quicksand-Regular",
-                                fontSize: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  faqList[i]['answer'],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(
+                                      color: grey,
+                                      fontFamily: "Quicksand-Regular",
+                                      fontSize: 16),
+                                ),
+                              ),
+                            ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
