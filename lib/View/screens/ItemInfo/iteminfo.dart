@@ -3,7 +3,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getwidget/getwidget.dart';
+
 import 'package:sheegr/Controller/quantity_controller.dart';
 
 import '../../../Resources/colors.dart';
@@ -14,7 +14,6 @@ class ItemInfo extends StatelessWidget {
   final String imagePath;
   QuantityController quantity = Get.put(QuantityController());
   ItemInfo({required this.imagePath});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -71,9 +70,6 @@ class ItemInfo extends StatelessWidget {
                 style: AppFontStyle.flexibleFontStyle(
                     fontSize: 19, fontWeight: FontWeight.bold),
               ),
-              
-             
-              
               Padding(
                 padding: const EdgeInsets.all(4),
                 child: ListView.builder(
@@ -243,20 +239,20 @@ class ItemInfo extends StatelessWidget {
                 ),
               ),
               SizedBox(
-          height: MediaQuery.of(context).size.height * 0.02,
-        ),
-        AutoSizeText(
-          'Related Products',
-          style: AppFontStyle.flexibleFontStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-              fontColor: Colors.black),
-          minFontSize: 14,
-          maxFontSize: 20,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.left,
-        ),
-              RelatedProductsWidget()
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              AutoSizeText(
+                'Related Products',
+                style: AppFontStyle.flexibleFontStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
+                    fontColor: Colors.black),
+                minFontSize: 14,
+                maxFontSize: 20,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.left,
+              ),
+              const RelatedProductsWidget()
             ],
           ),
         ),

@@ -98,7 +98,7 @@ class Account extends StatelessWidget {
                     image: "lib/Assets/Images/shoppingCart.png",
                     tileTitle: 'Orders',
                     onTap: () {
-                      Get.to(() => Orders());
+                      Get.to(() => const Orders());
                     }),
                 DrawerTiles(
                     image: "lib/Assets/Images/Account1.png",
@@ -140,7 +140,7 @@ class Account extends StatelessWidget {
                     image: "lib/Assets/Images/shoppingCart.png",
                     tileTitle: 'FAQ',
                     onTap: () {
-                      Get.to(() => const FAQ());
+                      Get.to(() => FAQ());
                     }),
                 DrawerTiles(
                     image: "lib/Assets/Images/shoppingCart.png",

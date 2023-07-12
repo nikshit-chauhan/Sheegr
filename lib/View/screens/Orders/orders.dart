@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Resources/Colors.dart';
-import '../../../Resources/fontstyle.dart';
 
 class Orders extends StatelessWidget {
   const Orders({super.key});
