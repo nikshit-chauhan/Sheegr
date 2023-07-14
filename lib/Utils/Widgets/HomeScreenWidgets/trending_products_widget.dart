@@ -12,8 +12,8 @@ class TrendingProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       // height: 310,
-      height: MediaQuery.of(context).size.height * 0.36,
-    
+      height: MediaQuery.of(context).size.height * 0.37,
+
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 10,

@@ -19,7 +19,7 @@ class ShopByCategoriesWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
                 CircleAvatar(
-                  radius: 33,
+                  radius: 30,
                   // minRadius: 20,
                   // maxRadius: 33,
                   // backgroundColor: Colors.transparent,

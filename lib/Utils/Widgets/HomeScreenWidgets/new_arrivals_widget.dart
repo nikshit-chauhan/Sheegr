@@ -11,7 +11,7 @@ class NewArrivalsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       // height: 310,
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.45,
 
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
