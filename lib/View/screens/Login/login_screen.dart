@@ -14,7 +14,7 @@ import '../../../Resources/strings.dart';
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   FirebaseAuth auth = FirebaseAuth.instance;
-  static String verificationId = "";
+  static String verificationCode = "";
   MobileController phoneNumberController = Get.put(MobileController());
 
   LoginScreen({super.key});
@@ -154,42 +154,53 @@ class LoginScreen extends StatelessWidget {
                                   .toString()
                                   .length ==
                               10;
+                          print("$isValidNumber");
                           return SizedBox(
                             width: double.infinity,
                             height: 50.0,
                             child: ElevatedButton(
                               onPressed: isValidNumber
                                   ? () async {
+                                      print("I'm here");
                                       String mobileNum = phoneNumberController
                                           .mobileNumber.value;
-                                      await auth.verifyPhoneNumber(
-                                        phoneNumber: countryCode + mobileNum,
-                                        verificationCompleted:
-                                            (PhoneAuthCredential
-                                                credential) async {
-                                          await FirebaseAuth.instance
-                                              .signInWithCredential(credential)
-                                              .then((value) async {
-                                            log("signinWithCredentials : $value");
-                                          });
-                                        },
-                                        verificationFailed:
-                                            (FirebaseAuthException e) {
-                                          if (e.code ==
-                                              'invalid-phone-number') {
-                                            log('The provided phone number is not valid.');
-                                          }
-                                        },
-                                        codeSent: (String verificationId,
-                                            int? resendToken) {
-                                          verificationId = verificationId;
-                                          Get.to(OtpVerificationScreen(
-                                            mobileNumber: mobileNum,
-                                          ));
-                                        },
-                                        codeAutoRetrievalTimeout:
-                                            (String verificationId) {},
-                                      );
+                                      print(mobileNum);
+                                      await auth
+                                          .verifyPhoneNumber(
+                                            phoneNumber:
+                                                countryCode + mobileNum,
+                                            verificationCompleted:
+                                                (PhoneAuthCredential
+                                                    credential) async {
+                                              print("verificationCompleted");
+                                              await FirebaseAuth.instance
+                                                  .signInWithCredential(
+                                                      credential)
+                                                  .then((value) async {
+                                                log("signinWithCredentials : $value");
+                                              });
+                                            },
+                                            verificationFailed:
+                                                (FirebaseAuthException e) {
+                                              print("verificationFailed $e");
+                                              if (e.code ==
+                                                  'invalid-phone-number') {
+                                                print(
+                                                    'The provided phone number is not valid.');
+                                              }
+                                            },
+                                            codeSent: (String verificationId,
+                                                int? resendToken) {
+                                              print("codeSent");
+                                              verificationCode = verificationId;
+                                              Get.to(OtpVerificationScreen(
+                                                mobileNumber: mobileNum,
+                                              ));
+                                            },
+                                            codeAutoRetrievalTimeout:
+                                                (String verificationId) {},
+                                          )
+                                          .then((value) => print("here also"));
                                     }
                                   : null,
                               style: ElevatedButton.styleFrom(

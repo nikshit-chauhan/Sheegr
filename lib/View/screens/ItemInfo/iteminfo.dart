@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:sheegr/Controller/quantity_controller.dart';
+import 'package:sheegr/Utils/Widgets/CommonWidgets/add_button.dart';
 
 import '../../../Resources/colors.dart';
 import '../../../Resources/fontstyle.dart';
@@ -14,6 +15,41 @@ class ItemInfo extends StatelessWidget {
   final String imagePath;
   QuantityController quantity = Get.put(QuantityController());
   ItemInfo({required this.imagePath});
+  bool _isShow = false;
+
+  // !  add to cart yet to develop ..Excluded as of now
+  Widget addToCartWidget() {
+    return Obx(
+      () {
+        return Visibility(
+          visible: false,
+          child: Row(
+            children: [
+              IconButton(
+                iconSize: 20,
+                icon: const Icon(Icons.remove),
+                onPressed: quantity.decrementQuantity,
+                color: const Color(0xffE40045),
+              ),
+              Text(
+                "${quantity.quantity.value}",
+                style: const TextStyle(
+                    color: Color(0xffE40045),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700),
+              ),
+              IconButton(
+                iconSize: 20,
+                icon: const Icon(Icons.add),
+                onPressed: quantity.increaseQuantity,
+                color: const Color(0xffE40045),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +111,7 @@ class ItemInfo extends StatelessWidget {
                 child: ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: 2,
+                    itemCount: 1,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
                         padding: const EdgeInsets.all(4),
@@ -92,12 +128,14 @@ class ItemInfo extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Expanded(
-                                  child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.asset(
-                                        "lib/Assets/Images/friedfish.png",
-                                        fit: BoxFit.cover,
-                                      ))),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    "lib/Assets/Images/friedfish.png",
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
                               const Expanded(
                                 child: ListTile(
                                   title: Column(
@@ -127,30 +165,15 @@ class ItemInfo extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                      icon: const Icon(Icons.remove),
-                                      onPressed: quantity.increaseQuantity,
-                                      color: const Color(0xffE40045),
-                                    ),
-                                    //TODO: Need to implement Getx addQuantity Method
-                                    const Text(
-                                      // quantity.toString(),
-                                      "0",
-                                      style: TextStyle(
-                                          color: Color(0xffE40045),
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    IconButton(
-                                      icon: const Icon(Icons.add),
-                                      onPressed: quantity.increaseQuantity,
-                                      color: const Color(0xffE40045),
-                                    ),
-                                  ],
-                                ),
+                                child: _isShow
+                                    ? Visibility(
+                                        visible: !_isShow,
+                                        child: AddButton(
+                                          onTap: () {},
+                                          isShow: true,
+                                        ),
+                                      )
+                                    : addToCartWidget(),
                               )
                             ],
                           ),
@@ -252,7 +275,7 @@ class ItemInfo extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.left,
               ),
-              const RelatedProductsWidget()
+              RelatedProductsWidget()
             ],
           ),
         ),

@@ -5,5 +5,6 @@ class MobileController extends GetxController {
 
   void setMobileNumber(String value) {
     mobileNumber.value = value;
+    update();
   }
 }

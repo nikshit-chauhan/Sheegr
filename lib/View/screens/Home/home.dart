@@ -147,6 +147,7 @@ class Home extends StatelessWidget {
     }
     return AppBar(
       bottom: preferredSizedWidget(),
+
       leadingWidth: 150,
       // centerTitle: false,
       leading: Align(
@@ -155,7 +156,7 @@ class Home extends StatelessWidget {
             children: [
               Image.asset(
                 "lib/Assets/Images/location_new.png",
-                height: 27,
+                height: 25,
                 fit: BoxFit.cover,
                 filterQuality: FilterQuality.high,
                 color: Colors.white,
@@ -222,33 +223,36 @@ class Home extends StatelessWidget {
 
   PreferredSizeWidget preferredSizedWidget() {
     return PreferredSize(
-      preferredSize: const Size.fromHeight(100),
+      preferredSize: Size.fromHeight(56),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
             Expanded(
-              child: Card(
-                elevation: 2,
-                shadowColor: const Color(0xffE40045).withRed(200),
-                color: Colors.white,
-                child: ListTile(
-                  title: NewTextField(
-                    hintText: "Search for fishes",
-                  ),
-                  trailing: const Icon(
-                    Icons.search_sharp,
-                    color: Color(0xffE40045),
-                    size: 32,
+              child: SizedBox(
+                height: 55,
+                child: Card(
+                  elevation: 2,
+                  shadowColor: const Color(0xffE40045).withRed(200),
+                  color: Colors.white,
+                  child: ListTile(
+                    title: NewTextField(
+                      hintText: "Search for fishes",
+                    ),
+                    trailing: const Icon(
+                      Icons.search_sharp,
+                      color: Color(0xffE40045),
+                      size: 32,
+                    ),
                   ),
                 ),
               ),
             ),
             SizedBox(
-              height: 75,
+              height: 55,
               child: Card(
                   child: Padding(
-                padding: const EdgeInsets.all(17.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Image.asset("lib/Assets/Images/bell.png"),
               )),
             )
@@ -265,9 +269,9 @@ class Home extends StatelessWidget {
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.01,
-        ),
+        // SizedBox(
+        //   height: MediaQuery.of(context).size.height * 0.0005,
+        // ),
         CarouselWidget(),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.02,

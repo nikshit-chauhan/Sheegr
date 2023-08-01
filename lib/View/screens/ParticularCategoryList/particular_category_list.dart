@@ -5,44 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sheegr/View/screens/ItemInfo/iteminfo.dart';
 
-import '../../../Controller/quantity_controller.dart';
 import '../../../Resources/Colors.dart';
 import '../../../Resources/fontstyle.dart';
 
 class ParticularCategoryList extends StatelessWidget {
-  ParticularCategoryList({super.key});
-  QuantityController quantity = Get.put(QuantityController());
-  //  int quantity = 0;
-  // bool _isShow = false;
-
-  //!  add to cart yet to develop ..Excluded as of now
-  // Widget addToCardWidget() {
-  //   return Visibility(
-  //     visible: _isShow,
-  //     child: Row(
-  //       mainAxisSize: MainAxisSize.min,
-  //       children: [
-  //         IconButton(
-  //           icon: const Icon(Icons.remove),
-  //           onPressed: quantity.decrementQuantity,
-  //           color: const Color(0xffE40045),
-  //         ),
-  //         Text(
-  //           quantity.toString(),
-  //           style: const TextStyle(
-  //               color: Color(0xffE40045),
-  //               fontSize: 20,
-  //               fontWeight: FontWeight.bold),
-  //         ),
-  //         IconButton(
-  //           icon: const Icon(Icons.add),
-  //           onPressed: quantity.increaseQuantity,
-  //           color: const Color(0xffE40045),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+  const ParticularCategoryList({super.key});
 
   @override
   Widget build(BuildContext context) {

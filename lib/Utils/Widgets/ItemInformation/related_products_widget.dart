@@ -1,11 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:sheegr/Utils/Widgets/CommonWidgets/add_button.dart';
 
 import '../../../Resources/Colors.dart';
 import '../../../Resources/fontstyle.dart';
 
 class RelatedProductsWidget extends StatelessWidget {
-  const RelatedProductsWidget({super.key});
+  RelatedProductsWidget({super.key});
+  bool _isShow = false;
 
   @override
   Widget build(BuildContext context) {
@@ -97,27 +99,13 @@ class RelatedProductsWidget extends StatelessWidget {
                                 style: AppFontStyle.flexibleFontStyle(
                                     fontSize: 20),
                               ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.04,
-                                decoration: BoxDecoration(
-                                    color:
-                                        const Color.fromARGB(255, 255, 255, 255)
-                                            .withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Colors.black.withOpacity(0.2))),
-                                child: const Center(
-                                  child: AutoSizeText(
-                                    'Add',
-                                    minFontSize: 10,
-                                    maxFontSize: 17,
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      color: colorPrimary,
-                                    ),
-                                  ),
+                              Visibility(
+                                visible: !_isShow,
+                                child: AddButton(
+                                  onTap: () {
+                                    _isShow = true;
+                                  },
+                                  isShow: true,
                                 ),
                               )
                             ],

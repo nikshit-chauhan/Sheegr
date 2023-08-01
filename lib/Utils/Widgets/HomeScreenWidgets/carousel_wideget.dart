@@ -14,7 +14,7 @@ class CarouselWidget extends StatelessWidget {
     return Obx(() => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.29,
             width: MediaQuery.of(context).size.width,
             // decoration: BoxDecoration(
             //   borderRadius: BorderRadius.circular(10),
@@ -50,7 +50,7 @@ class CarouselWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
                           "lib/Assets/Images/slider.png",
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                         ),
@@ -63,7 +63,7 @@ class CarouselWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
                           "lib/Assets/Images/slider.png",
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                         ),
@@ -76,7 +76,7 @@ class CarouselWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
                           "lib/Assets/Images/slider.png",
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                         ),
@@ -89,7 +89,7 @@ class CarouselWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
                           "lib/Assets/Images/slider.png",
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                         ),
@@ -102,7 +102,7 @@ class CarouselWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: Image.asset(
                           "lib/Assets/Images/slider.png",
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height,
                         ),
