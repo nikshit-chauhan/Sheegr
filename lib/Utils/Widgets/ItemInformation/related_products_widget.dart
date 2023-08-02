@@ -5,6 +5,7 @@ import 'package:sheegr/Utils/Widgets/CommonWidgets/add_button.dart';
 import '../../../Resources/Colors.dart';
 import '../../../Resources/fontstyle.dart';
 
+// ignore: must_be_immutable
 class RelatedProductsWidget extends StatelessWidget {
   RelatedProductsWidget({super.key});
   bool _isShow = false;

@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../Resources/Colors.dart';
 
+// ignore: must_be_immutable
 class AddButton extends StatelessWidget {
   AddButton({super.key, required this.onTap, required this.isShow});
   Function() onTap;

@@ -223,7 +223,7 @@ class Home extends StatelessWidget {
 
   PreferredSizeWidget preferredSizedWidget() {
     return PreferredSize(
-      preferredSize: Size.fromHeight(56),
+      preferredSize: const Size.fromHeight(56),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(

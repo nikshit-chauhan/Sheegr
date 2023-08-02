@@ -37,7 +37,7 @@ class CategoriesList extends StatelessWidget {
                 height: 200,
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => ParticularCategoryList());
+                    Get.to(() => const ParticularCategoryList());
                   },
                   child: Card(
                     shape: RoundedRectangleBorder(
